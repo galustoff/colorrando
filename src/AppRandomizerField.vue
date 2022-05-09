@@ -40,13 +40,13 @@ export default {
   },
 
   props: {
-    changeColorFlag: {
+    colorFlag: {
       type: Boolean
     }
   },
 
   watch: {
-    changeColorFlag() {
+    colorFlag() {
       this.setRandomBackgroundColor()
     }
   }

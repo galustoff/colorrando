@@ -1,5 +1,5 @@
 <template>
-  <app-randomizer-grid></app-randomizer-grid>
+  <app-randomizer-grid :color-flag="colorFlag"></app-randomizer-grid>
   <app-button :set="buttonSet" @refresh-colors="refreshColors"></app-button>
 </template>
 
@@ -13,7 +13,9 @@ export default {
       buttonSet: {
         text: 'COLOR!',
         event: 'refreshColors'
-      }
+      },
+
+      colorFlag: true
     }
   },
 
@@ -24,7 +26,7 @@ export default {
 
   methods: {
     refreshColors() {
-      console.log('colors refreshed...')
+      this.colorFlag = !this.colorFlag
     }
   }
 }
