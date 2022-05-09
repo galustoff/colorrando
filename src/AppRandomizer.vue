@@ -1,6 +1,8 @@
 <template>
-  <app-randomizer-grid :color-flag="colorFlag"></app-randomizer-grid>
-  <app-button :set="buttonSet" @refresh-colors="refreshColors"></app-button>
+  <div class="app-randomizer">
+    <app-randomizer-grid :color-flag="colorFlag"></app-randomizer-grid>
+    <app-button :set="buttonSet" @refresh-colors="refreshColors"></app-button>
+  </div>
 </template>
 
 <script>
@@ -32,4 +34,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.app-randomizer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 18px;
+}
+</style>

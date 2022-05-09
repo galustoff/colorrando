@@ -1,19 +1,19 @@
 <template>
   <ul class="app-randomizer__grid">
-    <app-randomizer-field
+    <app-randomizer-grid-field
       v-for="field in 100"
       :color-flag="colorFlag"
-    ></app-randomizer-field>
+    ></app-randomizer-grid-field>
   </ul>
 </template>
 
 <script>
-import AppRandomizerField from './AppRandomizerField.vue'
+import AppRandomizerGridField from './AppRandomizerGridField.vue'
 
 export default {
   props: ['colorFlag'],
   components: {
-    AppRandomizerField
+    AppRandomizerGridField
   }
 }
 </script>

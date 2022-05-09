@@ -14,7 +14,6 @@ export default {
 
 <style>
 .app-button {
-  margin-top: 18px;
   padding: 5px 10px;
   background-color: rgba(255, 255, 255, 0.9);
   border: 2px solid rgba(0, 0, 0, 0.85);

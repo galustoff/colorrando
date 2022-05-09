@@ -1,6 +1,6 @@
 <template>
   <li
-    class="app-randomizer__field"
+    class="app-randomizer__grid-field"
     :style="style"
     @click="$emit('pickColor', style.backgroundColor)"
   ></li>
@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style scoped>
-.app-randomizer__field {
+.app-randomizer__grid-field {
   display: inline-block;
   width: 40px;
   height: 40px;
