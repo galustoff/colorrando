@@ -8,7 +8,24 @@
 
 <script>
 export default {
-  props: ['set']
+  props: {
+    set: {
+      type: Object,
+      validator(set) {
+        const keysTemplate = ['text', 'event']
+        const setKeys = Object.keys(set)
+
+        /**
+         * checking availability of keys 'text' & 'event' in set object
+         * & both of properties are strings
+         */
+        if (!keysTemplate.every((key) => setKeys.includes(key))) return false
+        if (!setKeys.every((key) => typeof set[key] === 'string')) return false
+
+        return true
+      }
+    }
+  }
 }
 </script>
 
