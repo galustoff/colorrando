@@ -1,15 +1,20 @@
 <template>
-  <button class="change-color-btn" @click="$emit('changeColor')">color!</button>
+  <button
+    class="app-button"
+    v-text="set.text"
+    @click="$emit(set.event)"
+  ></button>
 </template>
 
 <script>
 export default {
-  emits: ['changeColor']
+  props: ['set']
 }
 </script>
 
 <style>
-.change-color-btn {
+.app-button {
+  margin-top: 18px;
   padding: 5px 10px;
   background-color: rgba(255, 255, 255, 0.9);
   border: 2px solid rgba(0, 0, 0, 0.85);
@@ -22,7 +27,7 @@ export default {
   color: rgba(0, 0, 0, 0.85);
 }
 
-.change-color-btn:active {
+.app-button:active {
   box-shadow: none;
 }
 </style>

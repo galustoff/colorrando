@@ -1,18 +1,21 @@
 <template>
   <div class="app-container">
-    <app-header></app-header>
-    <app-main></app-main>
+    <app-sketches></app-sketches>
+    <app-frontage></app-frontage>
+    <app-dump></app-dump>
   </div>
 </template>
 
 <script>
-import AppHeader from './AppHeader.vue'
-import AppMain from './AppMain.vue'
+import AppSketches from './AppSketches.vue'
+import AppFrontage from './AppFrontage.vue'
+import AppDump from './AppDump.vue'
 
 export default {
   components: {
-    AppHeader,
-    AppMain
+    AppSketches,
+    AppFrontage,
+    AppDump
   }
 }
 </script>
@@ -22,10 +25,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.04);
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  row-gap: 14px;
-  padding: 5px 0;
 }
 </style>
