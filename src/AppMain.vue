@@ -1,6 +1,6 @@
 <template>
   <main class="app-main">
-    <div></div>
+    <app-color-set :picked-color="pickedColor"></app-color-set>
     <app-color-randomizer @pick-color="pickColor"></app-color-randomizer>
     <app-color-set :picked-color="pickedColor"></app-color-set>
   </main>
@@ -34,5 +34,6 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  overflow-y: hidden;
 }
 </style>

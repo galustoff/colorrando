@@ -19,7 +19,7 @@ export default {
 
 <style>
 .app-container {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.04);
   height: 100vh;
   display: flex;
   flex-direction: column;
