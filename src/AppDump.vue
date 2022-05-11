@@ -1,7 +1,12 @@
 <template>
   <div class="app-dump">
     <div class="app-dump__wrapper">
-      <ul class="app-dump__list">
+      <ul
+        :class="{
+          'app-dump__list': true,
+          'app-dump__list_overflowed': dumpColors.length > 3
+        }"
+      >
         <app-dump-card
           v-for="i in dumpColors"
           :key="i"
@@ -82,13 +87,19 @@
   .app-dump__list {
     width: 400px;
     height: 400px;
-    overflow-y: scroll;
+
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     row-gap: 18px;
+  }
+
+  .app-dump__list_overflowed {
+    justify-content: flex-start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
   .app-dump__buttons {
