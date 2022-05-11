@@ -30,7 +30,7 @@
 
 <style>
   .app-sketches__container {
-    padding-top: 50px;
+    padding-top: var(--asides-pt);
     display: flex;
     flex-direction: column;
     row-gap: 18px;

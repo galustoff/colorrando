@@ -3,11 +3,11 @@
 </template>
 
 <style>
-.app-title {
-  font-family: sans-serif;
-  font-size: 32px;
-  line-height: 1em;
-  color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 18px;
-}
+  .app-title {
+    font-family: sans-serif;
+    font-size: var(--title-size);
+    line-height: var(--title-height);
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: var(--title-mb);
+  }
 </style>
