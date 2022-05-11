@@ -7,25 +7,25 @@
 </template>
 
 <script>
-import AppSketches from './AppSketches.vue'
-import AppFrontage from './AppFrontage.vue'
-import AppDump from './AppDump.vue'
+  import AppSketches from './AppSketches.vue'
+  import AppFrontage from './AppFrontage.vue'
+  import AppDump from './AppDump.vue'
 
-export default {
-  components: {
-    AppSketches,
-    AppFrontage,
-    AppDump
+  export default {
+    components: {
+      AppSketches,
+      AppFrontage,
+      AppDump
+    }
   }
-}
 </script>
 
 <style>
-.app-container {
-  background-color: rgba(0, 0, 0, 0.04);
-  height: 100vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
+  .app-container {
+    background-color: rgba(0, 0, 0, 0.04);
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
 </style>
