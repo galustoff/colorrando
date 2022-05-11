@@ -2,7 +2,11 @@
   <div class="app-dump">
     <div class="app-dump__wrapper">
       <ul class="app-dump__list">
-        <app-dump-card v-for="i in 4" :key="i"></app-dump-card>
+        <app-dump-card
+          v-for="i in dumpColors"
+          :key="i"
+          :bgc="i"
+        ></app-dump-card>
       </ul>
     </div>
     <div class="app-dump__buttons">
@@ -20,8 +24,10 @@
   import AppButton from './AppButton.vue'
 
   export default {
+    props: ['picked'],
     data() {
       return {
+        dumpColors: [],
         resetButtonSet: {
           text: 'RESET?',
           event: 'resetDump'
@@ -42,6 +48,11 @@
       },
       restoreDump() {
         console.log('dump restored...')
+      }
+    },
+    watch: {
+      picked(value) {
+        if (!this.dumpColors.includes(value)) this.dumpColors.push(value)
       }
     }
   }

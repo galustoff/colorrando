@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
     <app-sketches></app-sketches>
-    <app-frontage @pick-color="createDumpCard"></app-frontage>
-    <app-dump></app-dump>
+    <app-frontage @pick-color="pickColor"></app-frontage>
+    <app-dump :picked="picked"></app-dump>
   </div>
 </template>
 
@@ -12,14 +12,19 @@
   import AppDump from './AppDump.vue'
 
   export default {
+    data() {
+      return {
+        picked: ''
+      }
+    },
     components: {
       AppSketches,
       AppFrontage,
       AppDump
     },
     methods: {
-      createDumpCard(color) {
-        console.log('From App.vue: ', color)
+      pickColor(color) {
+        this.picked = color
       }
     }
   }
@@ -27,7 +32,9 @@
 
 <style>
   .app-container {
-    background-color: rgba(0, 0, 0, 0.04);
+    /* production and night modes */
+    /* background-color: rgba(0, 0, 0, 0.04); */
+    background-color: rgba(0, 0, 0, 0.2);
     height: 100vh;
     display: flex;
     justify-content: space-evenly;
