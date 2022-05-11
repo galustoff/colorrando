@@ -14,6 +14,7 @@
       <app-button
         :set="restoreButtonSet"
         @restore-dump="restoreDump"
+        v-show="lostColors.length > 0"
       ></app-button>
     </div>
   </div>
@@ -28,6 +29,7 @@
     data() {
       return {
         dumpColors: [],
+        lostColors: [],
         resetButtonSet: {
           text: 'RESET?',
           event: 'resetDump'
@@ -44,10 +46,12 @@
     },
     methods: {
       resetDump() {
-        console.log('reset dump...')
+        this.lostColors = this.dumpColors.slice(0)
+        this.dumpColors = []
       },
       restoreDump() {
-        console.log('dump restored...')
+        this.dumpColors = this.lostColors.slice(0)
+        this.lostColors = []
       }
     },
     watch: {
