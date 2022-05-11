@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <app-sketches></app-sketches>
-    <app-frontage></app-frontage>
+    <app-frontage @pick-color="createDumpCard"></app-frontage>
     <app-dump></app-dump>
   </div>
 </template>
@@ -16,6 +16,11 @@
       AppSketches,
       AppFrontage,
       AppDump
+    },
+    methods: {
+      createDumpCard(color) {
+        console.log('From App.vue: ', color)
+      }
     }
   }
 </script>

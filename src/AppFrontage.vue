@@ -1,27 +1,33 @@
 <template>
   <div class="app-frontage">
     <app-title></app-title>
-    <app-randomizer></app-randomizer>
+    <app-randomizer @pick-color="pickColor"></app-randomizer>
   </div>
 </template>
 
 <script>
-import AppTitle from './AppTitle.vue'
-import AppRandomizer from './AppRandomizer.vue'
+  import AppTitle from './AppTitle.vue'
+  import AppRandomizer from './AppRandomizer.vue'
 
-export default {
-  components: {
-    AppTitle,
-    AppRandomizer
+  export default {
+    emits: ['pickColor'],
+    components: {
+      AppTitle,
+      AppRandomizer
+    },
+    methods: {
+      pickColor(color) {
+        this.$emit('pickColor', color)
+      }
+    }
   }
-}
 </script>
 
 <style>
-.app-frontage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  .app-frontage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

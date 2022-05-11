@@ -7,56 +7,57 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      style: {
-        backgroundColor: ''
+  export default {
+    emits: ['pickColor'],
+    data() {
+      return {
+        style: {
+          backgroundColor: ''
+        }
+      }
+    },
+
+    mounted() {
+      this.setRandomBackgroundColor()
+    },
+
+    methods: {
+      getRandomInteger(upTo) {
+        return Math.floor(Math.random() * upTo)
+      },
+
+      getRandomColor() {
+        const r = this.getRandomInteger(256)
+        const g = this.getRandomInteger(256)
+        const b = this.getRandomInteger(256)
+        const a = this.getRandomInteger(101) / 100
+
+        return `rgba(${r}, ${g}, ${b}, ${a})`
+      },
+
+      setRandomBackgroundColor() {
+        this.style.backgroundColor = this.getRandomColor()
+      }
+    },
+
+    props: {
+      colorFlag: {
+        type: Boolean
+      }
+    },
+
+    watch: {
+      colorFlag() {
+        this.setRandomBackgroundColor()
       }
     }
-  },
-
-  mounted() {
-    this.setRandomBackgroundColor()
-  },
-
-  methods: {
-    getRandomInteger(upTo) {
-      return Math.floor(Math.random() * upTo)
-    },
-
-    getRandomColor() {
-      const r = this.getRandomInteger(256)
-      const g = this.getRandomInteger(256)
-      const b = this.getRandomInteger(256)
-      const a = this.getRandomInteger(101) / 100
-
-      return `rgba(${r}, ${g}, ${b}, ${a})`
-    },
-
-    setRandomBackgroundColor() {
-      this.style.backgroundColor = this.getRandomColor()
-    }
-  },
-
-  props: {
-    colorFlag: {
-      type: Boolean
-    }
-  },
-
-  watch: {
-    colorFlag() {
-      this.setRandomBackgroundColor()
-    }
   }
-}
 </script>
 
 <style scoped>
-.app-randomizer__grid-field {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-}
+  .app-randomizer__grid-field {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
 </style>

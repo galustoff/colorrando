@@ -3,6 +3,7 @@
     <app-randomizer-grid-field
       v-for="field in 100"
       :color-flag="colorFlag"
+      @pick-color="pickColor"
     ></app-randomizer-grid-field>
   </ul>
 </template>
@@ -11,9 +12,15 @@
   import AppRandomizerGridField from './AppRandomizerGridField.vue'
 
   export default {
+    emits: ['pickColor'],
     props: ['colorFlag'],
     components: {
       AppRandomizerGridField
+    },
+    methods: {
+      pickColor(color) {
+        this.$emit('pickColor', color)
+      }
     }
   }
 </script>

@@ -2,9 +2,7 @@
   <div class="app-dump">
     <div class="app-dump__wrapper">
       <ul class="app-dump__list">
-        <li class="app-dump__list-item"></li>
-        <li class="app-dump__list-item"></li>
-        <li class="app-dump__list-item"></li>
+        <app-dump-card v-for="i in 4" :key="i"></app-dump-card>
       </ul>
     </div>
     <div class="app-dump__buttons">
@@ -18,6 +16,7 @@
 </template>
 
 <script>
+  import AppDumpCard from './AppDumpCard.vue'
   import AppButton from './AppButton.vue'
 
   export default {
@@ -34,6 +33,7 @@
       }
     },
     components: {
+      AppDumpCard,
       AppButton
     },
     methods: {
@@ -71,17 +71,9 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     row-gap: 18px;
-  }
-
-  .app-dump__list-item {
-    margin-left: -40px;
-    background-color: rgb(238, 170, 170);
-    width: 200px;
-    height: 120px;
-    flex-shrink: 0;
   }
 
   .app-dump__buttons {
