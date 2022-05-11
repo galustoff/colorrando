@@ -40,7 +40,7 @@
   .app-sketches__fish {
     width: 360px;
     height: 400px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 124, 124, 0.04);
     border-radius: 10px;
   }
 </style>

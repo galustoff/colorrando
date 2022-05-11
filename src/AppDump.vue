@@ -1,6 +1,12 @@
 <template>
-  <div class="app-dump__container">
-    <div class="app-dump__fish"></div>
+  <div class="app-dump">
+    <div class="app-dump__wrapper">
+      <ul class="app-dump__list">
+        <li class="app-dump__list-item"></li>
+        <li class="app-dump__list-item"></li>
+        <li class="app-dump__list-item"></li>
+      </ul>
+    </div>
     <div class="app-dump__buttons">
       <app-button :set="resetButtonSet" @reset-dump="resetDump"></app-button>
       <app-button
@@ -42,7 +48,7 @@
 </script>
 
 <style>
-  .app-dump__container {
+  .app-dump {
     padding-top: var(--asides-pt);
     display: flex;
     flex-direction: column;
@@ -50,11 +56,32 @@
     align-items: center;
   }
 
-  .app-dump__fish {
+  .app-dump__wrapper {
     width: 360px;
     height: 400px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 124, 124, 0.04);
     border-radius: 10px;
+    overflow-x: hidden;
+  }
+
+  .app-dump__list {
+    width: 400px;
+    height: 400px;
+    overflow-y: scroll;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 18px;
+  }
+
+  .app-dump__list-item {
+    margin-left: -40px;
+    background-color: rgb(238, 170, 170);
+    width: 200px;
+    height: 120px;
+    flex-shrink: 0;
   }
 
   .app-dump__buttons {
