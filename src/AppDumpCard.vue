@@ -1,5 +1,11 @@
 <template>
-  <li class="app-dump__list-item app-dump-card">
+  <li
+    :class="{
+      'app-dump__list-item': true,
+      'app-dump-card': true,
+      'app-dump-card_appearing': cardIsAppearing
+    }"
+  >
     <div class="app-dump-card__swatch" :style="swatchStyle"></div>
   </li>
 </template>
@@ -10,16 +16,21 @@
       return {
         swatchStyle: {
           backgroundColor: this.bgc
-        }
+        },
+        cardIsAppearing: false
       }
     },
-    props: ['bgc']
+    props: ['bgc'],
+    mounted() {
+      setTimeout(() => {
+        this.cardIsAppearing = true
+      }, 20)
+    }
   }
 </script>
 
 <style>
   .app-dump__list-item {
-    margin-left: -40px;
     flex-shrink: 0;
   }
 
@@ -27,10 +38,21 @@
     we need a white color substrate under main color of card
   */
   .app-dump-card {
+    height: 0;
+    margin-bottom: 0;
+    transition: height 0.4s ease-out, margin-bottom 0.4s;
     width: 200px;
-    height: 120px;
     background-color: rgba(255, 255, 255, 1);
     position: relative;
+  }
+
+  .app-dump-card_appearing {
+    height: 120px;
+    margin-bottom: 18px;
+  }
+
+  .app-dump-card_appearing:last-of-type {
+    margin-bottom: 0;
   }
 
   .app-dump-card__swatch {

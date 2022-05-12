@@ -1,12 +1,7 @@
 <template>
   <div class="app-dump">
     <div class="app-dump__wrapper">
-      <ul
-        :class="{
-          'app-dump__list': true,
-          'app-dump__list_overflowed': dumpColors.length > 3
-        }"
-      >
+      <ul class="app-dump__list">
         <app-dump-card
           v-for="i in dumpColors"
           :key="i"
@@ -61,7 +56,7 @@
     },
     watch: {
       picked(value) {
-        if (!this.dumpColors.includes(value)) this.dumpColors.push(value)
+        if (!this.dumpColors.includes(value)) this.dumpColors.unshift(value)
       }
     }
   }
@@ -81,25 +76,18 @@
     height: 400px;
     background-color: rgba(0, 124, 124, 0.04);
     border-radius: 10px;
-    overflow-x: hidden;
+    overflow: scroll;
   }
 
   .app-dump__list {
-    width: 400px;
-    height: 400px;
-
+    width: 360px;
+    min-height: 400px;
     list-style: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 18px;
-  }
-
-  .app-dump__list_overflowed {
     justify-content: flex-start;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+    align-items: center;
+    padding: 18px 0;
   }
 
   .app-dump__buttons {
