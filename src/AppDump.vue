@@ -1,7 +1,15 @@
 <template>
   <div class="app-dump">
     <div class="app-dump__wrapper">
-      <ul class="app-dump__list">
+      <ul
+        :class="{
+          'app-dump__list': true,
+          'app-dump__list_empty': !dumpColors.length
+        }"
+      >
+        <li v-if="!dumpColors.length" class="app-dump__plug-list-item">
+          No colors selected
+        </li>
         <app-dump-card
           v-for="i in dumpColors"
           :key="i"
@@ -88,6 +96,14 @@
     justify-content: flex-start;
     align-items: center;
     padding: 18px 0;
+  }
+
+  .app-dump__list_empty {
+    justify-content: center;
+  }
+
+  .app-dump__plug-list-item {
+    font-family: sans-serif;
   }
 
   .app-dump__buttons {
