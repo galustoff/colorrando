@@ -22,6 +22,11 @@
     },
     props: ['bgc'],
     mounted() {
+      /**
+       * setTimeout provides css transition (height),
+       * delay less then 20ms may cause abrupt appearence
+       * without transition
+       */
       setTimeout(() => {
         this.cardIsAppearing = true
       }, 20)
