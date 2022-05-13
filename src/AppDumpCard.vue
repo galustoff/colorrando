@@ -47,7 +47,7 @@
   }
 
   .app-dump-card_appearing {
-    height: 120px;
+    height: 80px;
     margin-bottom: 18px;
   }
 
@@ -61,5 +61,6 @@
     right: 0;
     bottom: 0;
     left: 0;
+    cursor: pointer;
   }
 </style>
