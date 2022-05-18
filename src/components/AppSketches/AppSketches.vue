@@ -1,7 +1,7 @@
 <template>
   <div class="app-sketches__container">
     <app-sketches-list></app-sketches-list>
-    <app-button :set="buttonSet" @invert-sketches="invertSketches"></app-button>
+    <app-button :set="buttonSet" @invert-colors="invertColors"></app-button>
   </div>
 </template>
 
@@ -14,8 +14,18 @@
       return {
         buttonSet: {
           text: 'INVERT?',
-          event: 'invertSketches'
+          event: 'invertColors'
         }
+      }
+    },
+    props: {
+      frontColor: String,
+      backColor: String
+    },
+    provide() {
+      return {
+        frontColor: this.frontColor,
+        backColor: this.backColor
       }
     },
     components: {
@@ -23,7 +33,7 @@
       AppSketchesList
     },
     methods: {
-      invertSketches() {
+      invertColors() {
         console.log('invert sketches...')
       }
     }

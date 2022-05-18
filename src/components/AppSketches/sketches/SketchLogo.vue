@@ -1,16 +1,30 @@
 <template>
   <div class="sketch-logo">
-    <div class="sketch-logo__half sketch-logo__half_left">
+    <div class="sketch-logo__half" :style="leftHalfStyle">
       <p class="sketch-logo__text sketch-logo__text_left">lo</p>
     </div>
-    <div class="sketch-logo__half sketch-logo__half_right">
+    <div class="sketch-logo__half" :style="rightHalfStyle">
       <p class="sketch-logo__text sketch-logo__text_right">go</p>
     </div>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    inject: ['frontColor', 'backColor'],
+    data() {
+      return {
+        leftHalfStyle: {
+          color: this.backColor,
+          backgroundColor: this.frontColor
+        },
+        rightHalfStyle: {
+          color: this.frontColor,
+          backgroundColor: this.backColor
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>
@@ -25,18 +39,10 @@
     display: flex;
     align-items: center;
   }
-  .sketch-logo__half_left {
-    color: #fff;
-    background-color: #000;
-  }
-
-  .sketch-logo__half_right {
-    color: #000;
-    background-color: #fff;
-  }
 
   .sketch-logo__text {
     font-size: 88px;
+    font-weight: 700;
     font-family: sans-serif;
     flex-grow: 1;
   }

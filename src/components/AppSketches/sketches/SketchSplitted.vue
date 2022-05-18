@@ -1,12 +1,24 @@
 <template>
   <div class="sketch-splitted">
-    <div class="sketch-splitted__half sketch-splitted__half_left"></div>
-    <div class="sketch-splitted__half sketch-splitted__half_right"></div>
+    <div class="sketch-splitted__half" :style="leftHalfStyle"></div>
+    <div class="sketch-splitted__half" :style="rightHalfStyle"></div>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    inject: ['frontColor', 'backColor'],
+    data() {
+      return {
+        leftHalfStyle: {
+          backgroundColor: this.backColor
+        },
+        rightHalfStyle: {
+          backgroundColor: this.frontColor
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>
@@ -18,12 +30,5 @@
   .sketch-splitted__half {
     height: 120px;
     flex-grow: 1;
-  }
-  .sketch-splitted__half_left {
-    background-color: #fff;
-  }
-
-  .sketch-splitted__half_right {
-    background-color: #000;
   }
 </style>

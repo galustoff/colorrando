@@ -47,6 +47,8 @@
   .app-sketches__list {
     width: 360px;
     height: 400px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     background-color: rgba(0, 124, 124, 0.04);
     border-radius: 10px;
     list-style: none;
