@@ -16,6 +16,7 @@
    */
   import SketchText from './sketches/SketchText.vue'
   import SketchSplitted from './sketches/SketchSplitted.vue'
+  import SketchLogo from './sketches/SketchLogo.vue'
 
   export default {
     data() {
@@ -26,7 +27,8 @@
     components: {
       AppSketchesListItem,
       SketchText,
-      SketchSplitted
+      SketchSplitted,
+      SketchLogo
     },
     computed: {
       sketches() {

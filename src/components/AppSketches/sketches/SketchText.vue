@@ -13,5 +13,6 @@
   .sketch-text {
     color: #000;
     background-color: #fff;
+    font-family: sans-serif;
   }
 </style>
