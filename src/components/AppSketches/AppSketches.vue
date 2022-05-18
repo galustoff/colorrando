@@ -1,12 +1,13 @@
 <template>
   <div class="app-sketches__container">
-    <div class="app-sketches__fish"></div>
+    <app-sketches-list></app-sketches-list>
     <app-button :set="buttonSet" @invert-sketches="invertSketches"></app-button>
   </div>
 </template>
 
 <script>
   import AppButton from '../../AppButton.vue'
+  import AppSketchesList from './AppSketchesList.vue'
 
   export default {
     data() {
@@ -18,7 +19,8 @@
       }
     },
     components: {
-      AppButton
+      AppButton,
+      AppSketchesList
     },
     methods: {
       invertSketches() {
@@ -35,12 +37,5 @@
     flex-direction: column;
     row-gap: 18px;
     align-items: center;
-  }
-
-  .app-sketches__fish {
-    width: 360px;
-    height: 400px;
-    background-color: rgba(0, 124, 124, 0.04);
-    border-radius: 10px;
   }
 </style>
