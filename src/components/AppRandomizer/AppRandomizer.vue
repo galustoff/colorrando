@@ -10,7 +10,7 @@
 
 <script>
   import AppRandomizerGrid from './AppRandomizerGrid.vue'
-  import AppButton from './AppButton.vue'
+  import AppButton from '../../AppButton.vue'
 
   export default {
     emits: ['pickColor'],

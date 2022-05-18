@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  import AppSketches from './AppSketches.vue'
+  import AppSketches from './components/AppSketches/AppSketches.vue'
   import AppFrontage from './AppFrontage.vue'
-  import AppDump from './AppDump.vue'
+  import AppDump from './components/AppDump/AppDump.vue'
 
   export default {
     data() {

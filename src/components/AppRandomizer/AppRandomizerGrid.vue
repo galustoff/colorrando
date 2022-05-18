@@ -34,6 +34,6 @@
     background-color: rgba(255, 255, 255, 1);
     overflow: hidden;
     border-radius: 10px;
-    cursor: url('~assets/pipette.svg') 0 24, pointer;
+    cursor: url('../../assets/pipette.svg') 0 24, pointer;
   }
 </style>

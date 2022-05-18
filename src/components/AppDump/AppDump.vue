@@ -29,8 +29,8 @@
 </template>
 
 <script>
-  import AppDumpCard from './AppDumpCard.vue'
-  import AppButton from './AppButton.vue'
+  import AppDumpCard from '../../components/AppDump/AppDumpCard.vue'
+  import AppButton from '../../AppButton.vue'
 
   export default {
     props: ['picked'],

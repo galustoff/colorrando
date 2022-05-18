@@ -7,7 +7,7 @@
 
 <script>
   import AppTitle from './AppTitle.vue'
-  import AppRandomizer from './AppRandomizer.vue'
+  import AppRandomizer from './components/AppRandomizer/AppRandomizer.vue'
 
   export default {
     emits: ['pickColor'],
