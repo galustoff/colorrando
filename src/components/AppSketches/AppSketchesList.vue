@@ -7,8 +7,15 @@
 </template>
 
 <script>
+  /**
+   * Exclude from sketches
+   */
   import AppSketchesListItem from './AppSketchesListItem.vue'
+  /**
+   * sketches
+   */
   import SketchText from './sketches/SketchText.vue'
+  import SketchSplitted from './sketches/SketchSplitted.vue'
 
   export default {
     data() {
@@ -18,7 +25,8 @@
     },
     components: {
       AppSketchesListItem,
-      SketchText
+      SketchText,
+      SketchSplitted
     },
     computed: {
       sketches() {
