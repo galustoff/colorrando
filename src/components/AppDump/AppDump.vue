@@ -82,7 +82,7 @@
   .app-dump__wrapper {
     width: 360px;
     height: 400px;
-    background-color: rgba(0, 124, 124, 0.04);
+    background-color: rgba(020, 007, 088, 0.1);
     border-radius: 10px;
     overflow: scroll;
   }

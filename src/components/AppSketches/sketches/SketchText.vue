@@ -1,7 +1,7 @@
 <template>
   <p class="sketch-text" :style="style">
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis laboriosam
-    tempora error mollitia fugiat. Maxime!
+    tempora error mollitia fugiat.
   </p>
 </template>
 
@@ -22,7 +22,9 @@
         return {
           color: this.sketchColors.first,
           backgroundColor: this.sketchColors.second,
-          fontFamily: 'sans-serif'
+          fontFamily: 'sans-serif',
+          padding: '10px',
+          minHeight: '120px'
         }
       }
     }

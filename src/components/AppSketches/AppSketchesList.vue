@@ -49,7 +49,7 @@
     height: 400px;
     padding-top: 18px;
     padding-bottom: 18px;
-    background-color: rgba(0, 124, 124, 0.04);
+    background-color: rgba(020, 007, 088, 0.1);
     border-radius: 10px;
     list-style: none;
     display: flex;
