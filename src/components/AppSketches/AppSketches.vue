@@ -15,17 +15,11 @@
         buttonSet: {
           text: 'INVERT?',
           event: 'invertColors'
+        },
+        sketchColors: {
+          first: 'rgba(0, 0, 0, 1)',
+          second: 'rgba(255, 255, 255, 1)'
         }
-      }
-    },
-    props: {
-      frontColor: String,
-      backColor: String
-    },
-    provide() {
-      return {
-        frontColor: this.frontColor,
-        backColor: this.backColor
       }
     },
     components: {
@@ -34,7 +28,15 @@
     },
     methods: {
       invertColors() {
-        console.log('invert sketches...')
+        const tempColor = this.sketchColors.first
+
+        this.sketchColors.first = this.sketchColors.second
+        this.sketchColors.second = tempColor
+      }
+    },
+    provide() {
+      return {
+        sketchColors: this.sketchColors
       }
     }
   }

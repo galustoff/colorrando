@@ -1,9 +1,6 @@
 <template>
   <div class="app-container">
-    <app-sketches
-      :front-color="frontColor"
-      :back-color="backColor"
-    ></app-sketches>
+    <app-sketches></app-sketches>
     <app-frontage @pick-color="pickColor"></app-frontage>
     <app-dump :picked="pickedColor"></app-dump>
   </div>
@@ -17,9 +14,7 @@
   export default {
     data() {
       return {
-        pickedColor: '',
-        frontColor: 'rgba(0, 0, 0, 1)',
-        backColor: 'rgba(255, 255, 255, 1)'
+        pickedColor: ''
       }
     },
     components: {

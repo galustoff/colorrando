@@ -7,12 +7,21 @@
 
 <script>
   export default {
-    inject: ['frontColor', 'backColor'],
-    data() {
-      return {
-        style: {
-          color: this.frontColor,
-          backgroundColor: this.backColor,
+    inject: ['sketchColors'],
+    // data() {
+    //   return {
+    //     style: {
+    //       color: this.colors.first,
+    //       backgroundColor: this.colors.second,
+    //       fontFamily: 'sans-serif'
+    //     }
+    //   }
+    // },
+    computed: {
+      style() {
+        return {
+          color: this.sketchColors.first,
+          backgroundColor: this.sketchColors.second,
           fontFamily: 'sans-serif'
         }
       }

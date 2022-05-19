@@ -11,16 +11,18 @@
 
 <script>
   export default {
-    inject: ['frontColor', 'backColor'],
-    data() {
-      return {
-        leftHalfStyle: {
-          color: this.backColor,
-          backgroundColor: this.frontColor
-        },
-        rightHalfStyle: {
-          color: this.frontColor,
-          backgroundColor: this.backColor
+    inject: ['sketchColors'],
+    computed: {
+      rightHalfStyle() {
+        return {
+          color: this.sketchColors.second,
+          backgroundColor: this.sketchColors.first
+        }
+      },
+      leftHalfStyle() {
+        return {
+          color: this.sketchColors.first,
+          backgroundColor: this.sketchColors.second
         }
       }
     }
