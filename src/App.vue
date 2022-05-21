@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
     <app-sketches @invert-request="invertSketchColors"></app-sketches>
-    <app-frontage @pick-color="pickColor"></app-frontage>
-    <app-dump :picked="pickedColor"></app-dump>
+    <app-frontage @pick-color="addColorToDump"></app-frontage>
+    <app-dump :new-color="newDumpColor"></app-dump>
   </div>
 </template>
 
@@ -14,7 +14,7 @@
   export default {
     data() {
       return {
-        pickedColor: '',
+        newDumpColor: '',
         sketchColors: {
           first: 'rgba(0, 0, 0, 1)',
           second: 'rgba(255, 255, 255, 1)'
@@ -27,8 +27,8 @@
       AppDump
     },
     methods: {
-      pickColor(color) {
-        this.pickedColor = color
+      addColorToDump(color) {
+        this.newDumpColor = color
       },
       invertSketchColors() {
         const tempColor = this.sketchColors.first

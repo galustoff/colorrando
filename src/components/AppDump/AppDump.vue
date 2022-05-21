@@ -33,7 +33,7 @@
   import AppButton from '../../AppButton.vue'
 
   export default {
-    props: ['picked'],
+    props: ['newColor'],
     data() {
       return {
         dumpColors: [],
@@ -63,7 +63,7 @@
       }
     },
     watch: {
-      picked(value) {
+      newColor(value) {
         if (!this.dumpColors.includes(value)) this.dumpColors.unshift(value)
       }
     }
