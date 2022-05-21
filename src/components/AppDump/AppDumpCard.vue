@@ -6,7 +6,11 @@
       'app-dump-card_appearing': cardIsAppearing
     }"
   >
-    <div class="app-dump-card__swatch" :style="swatchStyle"></div>
+    <div
+      @click="swatchClick"
+      class="app-dump-card__swatch"
+      :style="swatchStyle"
+    ></div>
   </li>
 </template>
 
@@ -30,6 +34,11 @@
       setTimeout(() => {
         this.cardIsAppearing = true
       }, 20)
+    },
+    methods: {
+      swatchClick() {
+        this.$emit('newColorRequest', this.bgc)
+      }
     }
   }
 </script>

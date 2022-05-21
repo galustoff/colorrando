@@ -2,7 +2,10 @@
   <div class="app-container">
     <app-sketches @invert-request="invertSketchColors"></app-sketches>
     <app-frontage @pick-color="addColorToDump"></app-frontage>
-    <app-dump :new-color="newDumpColor"></app-dump>
+    <app-dump
+      @change-request="changeSketchColor"
+      :new-color="newDumpColor"
+    ></app-dump>
   </div>
 </template>
 
@@ -35,6 +38,9 @@
 
         this.sketchColors.first = this.sketchColors.second
         this.sketchColors.second = tempColor
+      },
+      changeSketchColor(oldColor, newColor) {
+        console.log('color changed...')
       }
     },
     provide() {
