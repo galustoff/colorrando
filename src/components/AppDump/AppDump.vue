@@ -1,10 +1,6 @@
 <template>
   <div class="app-dump">
     <div class="app-dump__wrapper">
-      <app-dump-controller
-        :new-color="controllerTriggerColor"
-      ></app-dump-controller>
-
       <ul
         :class="{
           'app-dump__list': true,
@@ -21,6 +17,10 @@
           :bgc="i"
         ></app-dump-card>
       </ul>
+
+      <app-dump-controller
+        :new-color="controllerTriggerColor"
+      ></app-dump-controller>
     </div>
 
     <div class="app-dump__buttons">
@@ -92,6 +92,7 @@
   }
 
   .app-dump__wrapper {
+    position: relative;
     width: 360px;
     height: 400px;
     background-color: rgba(020, 007, 088, 0.1);
