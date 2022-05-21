@@ -3,9 +3,10 @@
     <app-sketches @invert-request="invertSketchColors"></app-sketches>
     <app-frontage @pick-color="addColorToDump"></app-frontage>
     <app-dump
-      @change-request="changeSketchColor"
+      @new-color-request="changeSketchColor"
       :new-color="newDumpColor"
     ></app-dump>
+    <app-color-controller :new-color="newSketchColor"></app-color-controller>
   </div>
 </template>
 
@@ -13,11 +14,13 @@
   import AppSketches from './components/AppSketches/AppSketches.vue'
   import AppFrontage from './AppFrontage.vue'
   import AppDump from './components/AppDump/AppDump.vue'
+  import AppColorController from './AppColorController.vue'
 
   export default {
     data() {
       return {
         newDumpColor: '',
+        newSketchColor: '',
         sketchColors: {
           first: 'rgba(0, 0, 0, 1)',
           second: 'rgba(255, 255, 255, 1)'
@@ -27,7 +30,8 @@
     components: {
       AppSketches,
       AppFrontage,
-      AppDump
+      AppDump,
+      AppColorController
     },
     methods: {
       addColorToDump(color) {
@@ -39,8 +43,8 @@
         this.sketchColors.first = this.sketchColors.second
         this.sketchColors.second = tempColor
       },
-      changeSketchColor(oldColor, newColor) {
-        console.log('color changed...')
+      changeSketchColor(newColor) {
+        this.newSketchColor = newColor
       }
     },
     provide() {
@@ -60,5 +64,6 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    position: relative;
   }
 </style>

@@ -11,16 +11,12 @@
           No colors selected
         </li>
         <app-dump-card
-          @new-color-request="exciteController"
           v-for="i in dumpColors"
           :key="i"
           :bgc="i"
+          @new-color-request="newColorRequest"
         ></app-dump-card>
       </ul>
-
-      <app-dump-controller
-        :new-color="controllerTriggerColor"
-      ></app-dump-controller>
     </div>
 
     <div class="app-dump__buttons">
@@ -36,7 +32,6 @@
 
 <script>
   import AppDumpCard from './AppDumpCard.vue'
-  import AppDumpController from './AppDumpController.vue'
   import AppButton from '../../AppButton.vue'
 
   export default {
@@ -52,13 +47,11 @@
         restoreButtonSet: {
           text: 'Oops...',
           event: 'restoreDump'
-        },
-        controllerTriggerColor: ''
+        }
       }
     },
     components: {
       AppDumpCard,
-      AppDumpController,
       AppButton
     },
     methods: {
@@ -70,8 +63,8 @@
         this.dumpColors = this.lostColors.slice(0)
         this.lostColors = []
       },
-      exciteController(newColor) {
-        this.controllerTriggerColor = newColor
+      newColorRequest(newColor) {
+        this.$emit('newColorRequest', newColor)
       }
     },
     watch: {
@@ -92,7 +85,6 @@
   }
 
   .app-dump__wrapper {
-    position: relative;
     width: 360px;
     height: 400px;
     background-color: rgba(020, 007, 088, 0.1);
