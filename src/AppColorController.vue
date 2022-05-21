@@ -4,6 +4,7 @@
       'color-controller': true,
       'color-controller_opened': isOpened
     }"
+    @click="handleCloseClick"
   >
     <div class="color-controller__container">
       <app-color-controller-close-btn
@@ -61,6 +62,9 @@
       closePopup() {
         this.$emit('closePopup')
         this.isOpened = false
+      },
+      handleCloseClick(e) {
+        if (e.target === e.currentTarget) this.closePopup()
       }
     }
   }
@@ -91,7 +95,7 @@
     justify-content: center;
     align-items: center;
     row-gap: 100px;
-    background-color: rgba(95, 218, 255, 0.8);
+    background-color: rgb(174, 189, 212, 0.96);
     border-radius: 10px;
     position: relative;
   }
@@ -104,12 +108,13 @@
 
   .color-controller__color-substrate {
     background-color: rgba(255, 255, 255, 1);
-    border: 2px solid rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     overflow: hidden;
   }
 
   .color-controller__color {
+    border: 4px solid var(--dark-brown);
+    border-radius: 10px;
     width: 200px;
     height: 120px;
   }
