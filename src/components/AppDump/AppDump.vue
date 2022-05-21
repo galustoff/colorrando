@@ -77,6 +77,7 @@
 
 <style>
   .app-dump {
+    color: var(--dark-brown);
     padding-top: var(--asides-pt);
     display: flex;
     flex-direction: column;

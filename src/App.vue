@@ -6,7 +6,10 @@
       @new-color-request="changeSketchColor"
       :new-color="newDumpColor"
     ></app-dump>
-    <app-color-controller :new-color="newSketchColor"></app-color-controller>
+    <app-color-controller
+      :new-color="newSketchColor"
+      @close-popup="newSketchColor = ''"
+    ></app-color-controller>
   </div>
 </template>
 

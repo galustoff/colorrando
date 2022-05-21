@@ -3,4 +3,6 @@
   --title-height: calc(var(--title-size) * 1);
   --title-mb: 22px;
   --asides-pt: calc(var(--title-height) + var(--title-mb));
+
+  --dark-brown: rgba(48, 22, 17, 1);
 }

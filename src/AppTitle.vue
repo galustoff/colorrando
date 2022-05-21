@@ -7,7 +7,7 @@
     font-family: sans-serif;
     font-size: var(--title-size);
     line-height: var(--title-height);
-    color: rgba(0, 0, 0, 0.8);
+    color: var(--dark-brown);
     margin-bottom: var(--title-mb);
   }
 </style>
