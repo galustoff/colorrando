@@ -1,7 +1,7 @@
 <template>
   <div class="app-sketches__container">
     <app-sketches-list></app-sketches-list>
-    <app-button :set="buttonSet" @invert-colors="invertColors"></app-button>
+    <app-button :set="buttonSet" @invert-request="invertRequest"></app-button>
   </div>
 </template>
 
@@ -14,11 +14,7 @@
       return {
         buttonSet: {
           text: 'INVERT?',
-          event: 'invertColors'
-        },
-        sketchColors: {
-          first: 'rgba(0, 0, 0, 1)',
-          second: 'rgba(255, 255, 255, 1)'
+          event: 'invertRequest'
         }
       }
     },
@@ -27,16 +23,8 @@
       AppSketchesList
     },
     methods: {
-      invertColors() {
-        const tempColor = this.sketchColors.first
-
-        this.sketchColors.first = this.sketchColors.second
-        this.sketchColors.second = tempColor
-      }
-    },
-    provide() {
-      return {
-        sketchColors: this.sketchColors
+      invertRequest() {
+        this.$emit('invertRequest')
       }
     }
   }

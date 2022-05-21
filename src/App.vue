@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <app-sketches></app-sketches>
+    <app-sketches @invert-request="invertSketchColors"></app-sketches>
     <app-frontage @pick-color="pickColor"></app-frontage>
     <app-dump :picked="pickedColor"></app-dump>
   </div>
@@ -14,7 +14,11 @@
   export default {
     data() {
       return {
-        pickedColor: ''
+        pickedColor: '',
+        sketchColors: {
+          first: 'rgba(0, 0, 0, 1)',
+          second: 'rgba(255, 255, 255, 1)'
+        }
       }
     },
     components: {
@@ -25,6 +29,17 @@
     methods: {
       pickColor(color) {
         this.pickedColor = color
+      },
+      invertSketchColors() {
+        const tempColor = this.sketchColors.first
+
+        this.sketchColors.first = this.sketchColors.second
+        this.sketchColors.second = tempColor
+      }
+    },
+    provide() {
+      return {
+        sketchColors: this.sketchColors
       }
     }
   }
