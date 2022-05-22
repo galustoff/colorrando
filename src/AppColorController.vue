@@ -11,21 +11,34 @@
         @close-popup="closePopup"
       ></app-color-controller-close-btn>
       <div class="color-controller__sketch-colors">
-        <div class="color-controller__color-substrate">
-          <div
-            class="color-controller__color color-controller__color_old"
-            :style="firstColorStyle"
-          ></div>
+        <div class="color-controller__color-container">
+          <div class="color-controller__color-substrate">
+            <div
+              class="color-controller__color color-controller__color_old"
+              :style="firstColorStyle"
+            ></div>
+          </div>
         </div>
-        <div class="color-controller__color-substrate">
-          <div
-            class="color-controller__color color-controller__color_old"
-            :style="secondColorStyle"
-          ></div>
+        <div class="color-controller__color-container">
+          <div class="color-controller__color-substrate">
+            <div
+              class="color-controller__color color-controller__color_old"
+              :style="secondColorStyle"
+            ></div>
+          </div>
         </div>
       </div>
-      <div class="color-controller__new-color-container">
-        <div class="color-controller__new-color-popup"></div>
+      <div
+        class="color-controller__color-container color-controller__color-container_new-color"
+      >
+        <div class="color-controller__new-color-popup">
+          <div
+            class="color-controller__arrow color-controller__arrow_left"
+          ></div>
+          <div
+            class="color-controller__arrow color-controller__arrow_right"
+          ></div>
+        </div>
         <div class="color-controller__color-substrate">
           <div
             class="color-controller__color color-controller__color color-controller__color_new"
@@ -135,17 +148,42 @@
     cursor: url('assets/roller.svg') 12 0, pointer;
   }
 
-  .color-controller__new-color-container {
+  .color-controller__color-container {
+    transition: transform 0.2s linear;
+  }
+
+  .color-controller__color-container:hover {
+    transform: scale(1.1);
+  }
+
+  .color-controller__color-container_new-color {
     position: relative;
   }
 
-  .color-controller__new-color-container:hover
-    .color-controller__new-color-popup {
+  .color-controller__new-color-popup {
+    display: none;
+  }
+
+  .color-controller__color-container:hover .color-controller__new-color-popup {
     position: absolute;
-    top: -90px;
+    top: -80px;
     left: 10px;
-    width: 180px;
+    display: flex;
+    column-gap: 20px;
+  }
+
+  .color-controller__arrow {
+    width: 80px;
     height: 80px;
-    background-color: #fff;
+    background-image: url('assets/arrow.svg');
+    background-repeat: no-repeat;
+  }
+
+  .color-controller__arrow_left {
+    transform: rotate(-25deg);
+  }
+
+  .color-controller__arrow_right {
+    transform: rotate(25deg);
   }
 </style>
