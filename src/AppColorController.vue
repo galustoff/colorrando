@@ -24,11 +24,14 @@
           ></div>
         </div>
       </div>
-      <div class="color-controller__color-substrate">
-        <div
-          class="color-controller__color color-controller__color color-controller__color_new"
-          :style="newColorStyle"
-        ></div>
+      <div class="color-controller__new-color-container">
+        <div class="color-controller__new-color-popup"></div>
+        <div class="color-controller__color-substrate">
+          <div
+            class="color-controller__color color-controller__color color-controller__color_new"
+            :style="newColorStyle"
+          ></div>
+        </div>
       </div>
     </div>
   </div>
@@ -131,6 +134,18 @@
   .color-controller__color_old {
     cursor: url('assets/roller.svg') 12 0, pointer;
   }
-  .color-controller__color_new {
+
+  .color-controller__new-color-container {
+    position: relative;
+  }
+
+  .color-controller__new-color-container:hover
+    .color-controller__new-color-popup {
+    position: absolute;
+    top: -90px;
+    left: 10px;
+    width: 180px;
+    height: 80px;
+    background-color: #fff;
   }
 </style>
