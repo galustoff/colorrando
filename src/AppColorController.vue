@@ -12,14 +12,23 @@
       ></app-color-controller-close-btn>
       <div class="color-controller__sketch-colors">
         <div class="color-controller__color-substrate">
-          <div class="color-controller__color" :style="firstColorStyle"></div>
+          <div
+            class="color-controller__color color-controller__color_old"
+            :style="firstColorStyle"
+          ></div>
         </div>
         <div class="color-controller__color-substrate">
-          <div class="color-controller__color" :style="secondColorStyle"></div>
+          <div
+            class="color-controller__color color-controller__color_old"
+            :style="secondColorStyle"
+          ></div>
         </div>
       </div>
       <div class="color-controller__color-substrate">
-        <div class="color-controller__color" :style="newColorStyle"></div>
+        <div
+          class="color-controller__color color-controller__color color-controller__color_new"
+          :style="newColorStyle"
+        ></div>
       </div>
     </div>
   </div>
@@ -117,5 +126,11 @@
     border-radius: 10px;
     width: 200px;
     height: 120px;
+  }
+
+  .color-controller__color_old {
+    cursor: url('assets/roller.svg') 12 0, pointer;
+  }
+  .color-controller__color_new {
   }
 </style>
