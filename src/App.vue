@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
-    <app-sketches @invert-request="invertSketchColors"></app-sketches>
+    <the-header />
+    <the-main />
+    <!-- <app-sketches @invert-request="invertSketchColors"></app-sketches>
     <app-frontage @pick-color="addColorToDump"></app-frontage>
     <app-dump
       @new-color-request="openController"
@@ -10,17 +12,27 @@
       :new-color="newSketchColor"
       @change-color-request="changeSketchColor"
       @closing-popup="newSketchColor = ''"
-    ></app-color-controller>
+    ></app-color-controller> -->
   </div>
 </template>
 
 <script>
-  import AppSketches from './components/AppSketches/AppSketches.vue'
-  import AppFrontage from './AppFrontage.vue'
-  import AppDump from './components/AppDump/AppDump.vue'
-  import AppColorController from './AppColorController.vue'
+  import TheHeader from './components/TheHeader/TheHeader.vue'
+  import TheMain from './components/TheMain/TheMain.vue'
+  // import AppSketches from './components/AppSketches/AppSketches.vue'
+  // import AppFrontage from './AppFrontage.vue'
+  // import AppDump from './components/AppDump/AppDump.vue'
+  // import AppColorController from './AppColorController.vue'
 
   export default {
+    components: {
+      TheHeader,
+      TheMain
+      // AppSketches,
+      // AppFrontage,
+      // AppDump,
+      // AppColorController
+    }
     /**
      * newDumpColor is flag for TheDump. When it changes a new color adds to dump color array (if array does not already exist the same color)
      *
@@ -28,54 +40,49 @@
      *
      * sketchColors are the main colors of the app, initially they are black and white
      */
-    data() {
-      return {
-        newDumpColor: '',
-        newSketchColor: '',
-        sketchColors: {
-          first: 'rgba(0, 0, 0, 1)',
-          second: 'rgba(255, 255, 255, 1)'
-        }
-      }
-    },
-    components: {
-      AppSketches,
-      AppFrontage,
-      AppDump,
-      AppColorController
-    },
-    methods: {
-      addColorToDump(color) {
-        this.newDumpColor = color
-      },
-      invertSketchColors() {
-        const tempColor = this.sketchColors.first
+    // data() {
+    //   return {
+    //     newDumpColor: '',
+    //     newSketchColor: '',
+    //     sketchColors: {
+    //       first: 'rgba(0, 0, 0, 1)',
+    //       second: 'rgba(255, 255, 255, 1)'
+    //     }
+    //   }
+    // },
 
-        this.sketchColors.first = this.sketchColors.second
-        this.sketchColors.second = tempColor
-      },
-      openController(newColor) {
-        this.newSketchColor = newColor
-      },
-      changeSketchColor(oldColor) {
-        this.sketchColors[oldColor] = this.newSketchColor
-      }
-    },
-    provide() {
-      return {
-        sketchColors: this.sketchColors
-      }
-    },
-    computed: {
-      sketchColorsFirst() {
-        return this.sketchColors.first
-      }
-    },
-    watch: {
-      sketchColorsFirst(value) {
-        console.log(value)
-      }
-    }
+    // methods: {
+    //   addColorToDump(color) {
+    //     this.newDumpColor = color
+    //   },
+    //   invertSketchColors() {
+    //     const tempColor = this.sketchColors.first
+
+    //     this.sketchColors.first = this.sketchColors.second
+    //     this.sketchColors.second = tempColor
+    //   },
+    //   openController(newColor) {
+    //     this.newSketchColor = newColor
+    //   },
+    //   changeSketchColor(oldColor) {
+    //     this.sketchColors[oldColor] = this.newSketchColor
+    //   }
+    // },
+    // provide() {
+    //   return {
+    //     sketchColors: this.sketchColors
+    //   }
+    // },
+    // computed: {
+    //   sketchColorsFirst() {
+    //     return this.sketchColors.first
+    //   }
+    // },
+    // watch: {
+    //   sketchColorsFirst(value) {
+    //     console.log(value)
+    //   }
+    // }
   }
 </script>
 
@@ -86,8 +93,8 @@
     background-color: rgba(0, 0, 0, 0.2);
     height: 100vh;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
   }
 </style>

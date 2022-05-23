@@ -1,6 +1,6 @@
 <template>
   <li
-    class="app-randomizer__grid-field"
+    class="the-randomizer__grid-field"
     :style="style"
     @click="$emit('pickColor', style.backgroundColor)"
   ></li>
@@ -8,12 +8,25 @@
 
 <script>
   export default {
+    props: {
+      colorFlag: {
+        type: Boolean
+      }
+    },
+
     emits: ['pickColor'],
+
     data() {
       return {
         style: {
           backgroundColor: ''
         }
+      }
+    },
+
+    watch: {
+      colorFlag() {
+        this.setRandomBackgroundColor()
       }
     },
 
@@ -38,24 +51,12 @@
       setRandomBackgroundColor() {
         this.style.backgroundColor = this.getRandomColor()
       }
-    },
-
-    props: {
-      colorFlag: {
-        type: Boolean
-      }
-    },
-
-    watch: {
-      colorFlag() {
-        this.setRandomBackgroundColor()
-      }
     }
   }
 </script>
 
 <style scoped>
-  .app-randomizer__grid-field {
+  .the-randomizer__grid-field {
     display: inline-block;
     width: 40px;
     height: 40px;

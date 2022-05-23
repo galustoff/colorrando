@@ -1,19 +1,22 @@
 <template>
-  <div class="app-randomizer">
-    <app-randomizer-grid
-      :color-flag="colorFlag"
-      @pick-color="pickColor"
-    ></app-randomizer-grid>
-    <app-button :set="buttonSet" @refresh-colors="refreshColors"></app-button>
+  <div class="the-randomizer">
+    <the-randomizer-grid :color-flag="colorFlag" @pick-color="pickColor" />
+    <app-button :set="buttonSet" @refresh-colors="refreshColors" />
   </div>
 </template>
 
 <script>
-  import AppRandomizerGrid from './AppRandomizerGrid.vue'
+  import TheRandomizerGrid from './TheRandomizerGrid.vue'
   import AppButton from '../../AppButton.vue'
 
   export default {
+    components: {
+      TheRandomizerGrid,
+      AppButton
+    },
+
     emits: ['pickColor'],
+
     data() {
       return {
         buttonSet: {
@@ -23,11 +26,6 @@
 
         colorFlag: true
       }
-    },
-
-    components: {
-      AppRandomizerGrid,
-      AppButton
     },
 
     methods: {
@@ -42,7 +40,7 @@
 </script>
 
 <style>
-  .app-randomizer {
+  .the-randomizer {
     display: flex;
     flex-direction: column;
     align-items: center;

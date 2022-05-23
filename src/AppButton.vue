@@ -1,8 +1,8 @@
 <template>
   <button
     class="app-button"
-    v-text="set.text"
     @click="$emit(set.event)"
+    v-text="set.text"
   ></button>
 </template>
 
