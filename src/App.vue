@@ -8,7 +8,7 @@
     ></app-dump>
     <app-color-controller
       :new-color="newSketchColor"
-      @close-popup="newSketchColor = ''"
+      @closing-popup="newSketchColor = ''"
     ></app-color-controller>
   </div>
 </template>
@@ -20,6 +20,13 @@
   import AppColorController from './AppColorController.vue'
 
   export default {
+    /**
+     * newDumpColor is flag for TheDump. When it changes a new color adds to dump color array (if array does not already exist the same color)
+     *
+     * newSketchColor is flag for TheColorController. When it changes and not false, it triggering controller for open popup for change one of sketchColors
+     *
+     * sketchColors are the main colors of the app, initially they are black and white
+     */
     data() {
       return {
         newDumpColor: '',

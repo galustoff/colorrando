@@ -1,4 +1,5 @@
 <template>
+  <!-- As is known, one of the most difficult problems of programming is naming. The code below illustrate this. Sorry -->
   <div
     :class="{
       'color-controller': true,
@@ -6,10 +7,13 @@
     }"
     @click="handleCloseClick"
   >
+    <!-- close button -->
     <div class="color-controller__container">
       <app-color-controller-close-btn
         @close-popup="closePopup"
       ></app-color-controller-close-btn>
+
+      <!-- first color swatch -->
       <div class="color-controller__sketch-colors">
         <div class="color-controller__color-container">
           <div class="color-controller__color-substrate">
@@ -19,6 +23,8 @@
             ></div>
           </div>
         </div>
+
+        <!-- second color swatch -->
         <div class="color-controller__color-container">
           <div class="color-controller__color-substrate">
             <div
@@ -28,10 +34,12 @@
           </div>
         </div>
       </div>
+
+      <!-- new color swatch -->
       <div
         class="color-controller__color-container color-controller__color-container_new-color"
       >
-        <div class="color-controller__new-color-popup">
+        <div class="color-controller__new-color-arrows-popup">
           <div
             class="color-controller__arrow color-controller__arrow_left"
           ></div>
@@ -85,7 +93,7 @@
     },
     methods: {
       closePopup() {
-        this.$emit('closePopup')
+        this.$emit('closingPopup')
         this.isOpened = false
       },
       handleCloseClick(e) {
@@ -144,10 +152,6 @@
     height: 120px;
   }
 
-  .color-controller__color_old {
-    cursor: url('assets/roller.svg') 12 0, pointer;
-  }
-
   .color-controller__color-container {
     transition: transform 0.2s linear;
   }
@@ -160,11 +164,16 @@
     position: relative;
   }
 
-  .color-controller__new-color-popup {
+  .color-controller__color_old {
+    cursor: url('assets/roller.svg') 12 0, pointer;
+  }
+
+  .color-controller__new-color-arrows-popup {
     display: none;
   }
 
-  .color-controller__color-container:hover .color-controller__new-color-popup {
+  .color-controller__color-container:hover
+    .color-controller__new-color-arrows-popup {
     position: absolute;
     top: -80px;
     left: 10px;
