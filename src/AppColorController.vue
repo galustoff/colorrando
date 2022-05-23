@@ -108,7 +108,7 @@
       },
       changeColor(oldColor) {
         this.$emit('changeColorRequest', oldColor)
-        // this.closePopup()
+        this.closePopup()
       }
     }
   }
