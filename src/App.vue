@@ -3,11 +3,12 @@
     <app-sketches @invert-request="invertSketchColors"></app-sketches>
     <app-frontage @pick-color="addColorToDump"></app-frontage>
     <app-dump
-      @new-color-request="changeSketchColor"
+      @new-color-request="openController"
       :new-color="newDumpColor"
     ></app-dump>
     <app-color-controller
       :new-color="newSketchColor"
+      @change-color-request="changeSketchColor"
       @closing-popup="newSketchColor = ''"
     ></app-color-controller>
   </div>
@@ -53,13 +54,26 @@
         this.sketchColors.first = this.sketchColors.second
         this.sketchColors.second = tempColor
       },
-      changeSketchColor(newColor) {
+      openController(newColor) {
         this.newSketchColor = newColor
+      },
+      changeSketchColor(oldColor) {
+        this.sketchColors[oldColor] = this.newSketchColor
       }
     },
     provide() {
       return {
         sketchColors: this.sketchColors
+      }
+    },
+    computed: {
+      sketchColorsFirst() {
+        return this.sketchColors.first
+      }
+    },
+    watch: {
+      sketchColorsFirst(value) {
+        console.log(value)
       }
     }
   }

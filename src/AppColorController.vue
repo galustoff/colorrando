@@ -15,7 +15,10 @@
 
       <!-- first color swatch -->
       <div class="color-controller__sketch-colors">
-        <div class="color-controller__color-container">
+        <div
+          class="color-controller__color-container"
+          @click="changeColor('first')"
+        >
           <div class="color-controller__color-substrate">
             <div
               class="color-controller__color color-controller__color_old"
@@ -25,7 +28,10 @@
         </div>
 
         <!-- second color swatch -->
-        <div class="color-controller__color-container">
+        <div
+          class="color-controller__color-container"
+          @click="changeColor('second')"
+        >
           <div class="color-controller__color-substrate">
             <div
               class="color-controller__color color-controller__color_old"
@@ -62,6 +68,7 @@
   import AppColorControllerCloseBtn from './AppColorControllerCloseBtn.vue'
 
   export default {
+    emits: ['closingPopup', 'changeColorRequest'],
     data() {
       return {
         isOpened: false,
@@ -98,6 +105,10 @@
       },
       handleCloseClick(e) {
         if (e.target === e.currentTarget) this.closePopup()
+      },
+      changeColor(oldColor) {
+        this.$emit('changeColorRequest', oldColor)
+        // this.closePopup()
       }
     }
   }
