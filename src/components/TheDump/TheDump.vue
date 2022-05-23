@@ -1,41 +1,49 @@
 <template>
-  <div class="app-dump">
-    <div class="app-dump__wrapper">
+  <div class="the-dump">
+    <div class="the-dump__wrapper">
       <ul
         :class="{
-          'app-dump__list': true,
-          'app-dump__list_empty': !dumpColors.length
+          'the-dump__list': true,
+          'the-dump__list_empty': !dumpColors.length
         }"
       >
-        <li v-if="!dumpColors.length" class="app-dump__plug-list-item">
+        <li class="the-dump__plug-list-item" v-if="!dumpColors.length">
           No colors selected
         </li>
-        <app-dump-card
+        <dump-card
           v-for="i in dumpColors"
           :key="i"
           :bgc="i"
           @new-color-request="newColorRequest"
-        ></app-dump-card>
+        />
       </ul>
     </div>
 
-    <div class="app-dump__buttons">
-      <app-button :set="resetButtonSet" @reset-dump="resetDump"></app-button>
+    <div class="the-dump__buttons">
+      <app-button :set="resetButtonSet" @reset-dump="resetDump" />
       <app-button
+        v-show="lostColors.length > 0"
         :set="restoreButtonSet"
         @restore-dump="restoreDump"
-        v-show="lostColors.length > 0"
-      ></app-button>
+      />
     </div>
   </div>
 </template>
 
 <script>
-  import AppDumpCard from './AppDumpCard.vue'
+  import DumpCard from './DumpCard.vue'
   import AppButton from '../../AppButton.vue'
 
   export default {
+    components: {
+      DumpCard,
+      AppButton
+    },
+
     props: ['newColor'],
+
+    emits: ['newColorRequest'],
+
     data() {
       return {
         dumpColors: [],
@@ -50,10 +58,13 @@
         }
       }
     },
-    components: {
-      AppDumpCard,
-      AppButton
+
+    watch: {
+      newColor(value) {
+        if (!this.dumpColors.includes(value)) this.dumpColors.unshift(value)
+      }
     },
+
     methods: {
       resetDump() {
         this.lostColors = this.dumpColors.slice(0)
@@ -66,17 +77,12 @@
       newColorRequest(newColor) {
         this.$emit('newColorRequest', newColor)
       }
-    },
-    watch: {
-      newColor(value) {
-        if (!this.dumpColors.includes(value)) this.dumpColors.unshift(value)
-      }
     }
   }
 </script>
 
 <style>
-  .app-dump {
+  .the-dump {
     color: var(--dark-brown);
     display: flex;
     flex-direction: column;
@@ -84,7 +90,7 @@
     align-items: center;
   }
 
-  .app-dump__wrapper {
+  .the-dump__wrapper {
     width: 360px;
     height: 400px;
     background-color: rgba(020, 007, 088, 0.1);
@@ -92,7 +98,7 @@
     overflow: scroll;
   }
 
-  .app-dump__list {
+  .the-dump__list {
     width: 360px;
     min-height: 400px;
     list-style: none;
@@ -103,15 +109,15 @@
     padding: 18px 0;
   }
 
-  .app-dump__list_empty {
+  .the-dump__list_empty {
     justify-content: center;
   }
 
-  .app-dump__plug-list-item {
+  .the-dump__plug-list-item {
     font-family: sans-serif;
   }
 
-  .app-dump__buttons {
+  .the-dump__buttons {
     display: flex;
     justify-content: center;
     column-gap: 18px;

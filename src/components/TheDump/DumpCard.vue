@@ -1,21 +1,25 @@
 <template>
   <li
     :class="{
-      'app-dump__list-item': true,
-      'app-dump-card': true,
-      'app-dump-card_appearing': cardIsAppearing
+      'the-dump__list-item': true,
+      'dump-card': true,
+      'dump-card_appearing': cardIsAppearing
     }"
   >
     <div
-      @click="swatchClick"
-      class="app-dump-card__swatch"
+      class="dump-card__swatch"
       :style="swatchStyle"
+      @click="swatchClick"
     ></div>
   </li>
 </template>
 
 <script>
   export default {
+    props: ['bgc'],
+
+    emits: ['newColorRequest'],
+
     data() {
       return {
         swatchStyle: {
@@ -24,7 +28,7 @@
         cardIsAppearing: false
       }
     },
-    props: ['bgc'],
+
     mounted() {
       /**
        * setTimeout provides css transition (height),
@@ -35,6 +39,7 @@
         this.cardIsAppearing = true
       }, 20)
     },
+
     methods: {
       swatchClick() {
         this.$emit('newColorRequest', this.bgc)
@@ -44,14 +49,12 @@
 </script>
 
 <style>
-  .app-dump__list-item {
+  .the-dump__list-item {
     flex-shrink: 0;
   }
 
-  /**.app-dump-card
-    we need a white color substrate under main color of card
-  */
-  .app-dump-card {
+  /* we need a white color substrate under main color of card */
+  .dump-card {
     height: 0;
     margin-bottom: 0;
     transition: height 0.4s ease-out, margin-bottom 0.4s;
@@ -60,16 +63,16 @@
     position: relative;
   }
 
-  .app-dump-card_appearing {
+  .dump-card_appearing {
     height: 80px;
     margin-bottom: 18px;
   }
 
-  .app-dump-card_appearing:last-of-type {
+  .dump-card_appearing:last-of-type {
     margin-bottom: 0;
   }
 
-  .app-dump-card__swatch {
+  .dump-card__swatch {
     position: absolute;
     top: 0;
     right: 0;

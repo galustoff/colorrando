@@ -3,7 +3,6 @@
     <the-header />
     <the-main />
     <!-- <app-sketches @invert-request="invertSketchColors"></app-sketches>
-    <app-frontage @pick-color="addColorToDump"></app-frontage>
     <app-dump
       @new-color-request="openController"
       :new-color="newDumpColor"
