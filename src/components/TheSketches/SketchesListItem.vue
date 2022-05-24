@@ -1,6 +1,6 @@
 <template>
-  <li class="app-sketches__list-item">
-    <slot></slot>
+  <li class="sketches__list-item">
+    <slot />
   </li>
 </template>
 
@@ -9,7 +9,7 @@
 </script>
 
 <style>
-  .app-sketches__list-item {
+  .sketches__list-item {
     width: 200px;
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <p class="sketch-text" :style="style">
+  <p :style="style">
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis laboriosam
     tempora error mollitia fugiat.
   </p>
@@ -7,21 +7,13 @@
 
 <script>
   export default {
-    inject: ['sketchColors'],
-    // data() {
-    //   return {
-    //     style: {
-    //       color: this.colors.first,
-    //       backgroundColor: this.colors.second,
-    //       fontFamily: 'sans-serif'
-    //     }
-    //   }
-    // },
+    inject: ['mainColors'],
+
     computed: {
       style() {
         return {
-          color: this.sketchColors.first,
-          backgroundColor: this.sketchColors.second,
+          color: this.mainColors.first,
+          backgroundColor: this.mainColors.second,
           fontFamily: 'sans-serif',
           padding: '10px',
           minHeight: '120px'

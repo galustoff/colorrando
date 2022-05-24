@@ -1,15 +1,22 @@
 <template>
-  <div class="app-sketches__container">
-    <app-sketches-list></app-sketches-list>
+  <div class="the-sketches">
+    <sketches-list />
     <app-button :set="buttonSet" @invert-request="invertRequest"></app-button>
   </div>
 </template>
 
 <script>
   import AppButton from '../../AppButton.vue'
-  import AppSketchesList from './AppSketchesList.vue'
+  import SketchesList from './SketchesList.vue'
 
   export default {
+    components: {
+      AppButton,
+      SketchesList
+    },
+
+    emits: ['invertRequest'],
+
     data() {
       return {
         buttonSet: {
@@ -18,10 +25,7 @@
         }
       }
     },
-    components: {
-      AppButton,
-      AppSketchesList
-    },
+
     methods: {
       invertRequest() {
         this.$emit('invertRequest')
@@ -31,7 +35,7 @@
 </script>
 
 <style>
-  .app-sketches__container {
+  .the-sketches {
     display: flex;
     flex-direction: column;
     row-gap: 18px;

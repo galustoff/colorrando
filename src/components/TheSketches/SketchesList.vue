@@ -1,8 +1,8 @@
 <template>
-  <ul class="app-sketches__list">
-    <app-sketches-list-item v-for="item in sketches">
-      <component :is="item"></component>
-    </app-sketches-list-item>
+  <ul class="sketches-list">
+    <sketches-list-item v-for="item in sketches">
+      <component :is="item" />
+    </sketches-list-item>
   </ul>
 </template>
 
@@ -10,7 +10,7 @@
   /**
    * Exclude from sketches
    */
-  import AppSketchesListItem from './AppSketchesListItem.vue'
+  import SketchesListItem from './SketchesListItem.vue'
   /**
    * sketches
    */
@@ -21,11 +21,11 @@
   export default {
     data() {
       return {
-        compsToExclude: ['AppSketchesListItem']
+        compsToExclude: ['SketchesListItem']
       }
     },
     components: {
-      AppSketchesListItem,
+      SketchesListItem,
       SketchText,
       SketchSplitted,
       SketchLogo
@@ -44,7 +44,7 @@
 </script>
 
 <style>
-  .app-sketches__list {
+  .sketches-list {
     width: 360px;
     height: 400px;
     padding-top: 18px;

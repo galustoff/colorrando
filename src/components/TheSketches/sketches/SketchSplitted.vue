@@ -7,17 +7,17 @@
 
 <script>
   export default {
-    inject: ['sketchColors'],
+    inject: ['mainColors'],
 
     computed: {
       rightHalfStyle() {
         return {
-          backgroundColor: this.sketchColors.second
+          backgroundColor: this.mainColors.second
         }
       },
       leftHalfStyle() {
         return {
-          backgroundColor: this.sketchColors.first
+          backgroundColor: this.mainColors.first
         }
       }
     }
