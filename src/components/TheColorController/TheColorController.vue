@@ -7,11 +7,9 @@
     }"
     @click="handleCloseClick"
   >
-    <!-- close button -->
     <div class="color-controller__container">
-      <app-color-controller-close-btn
-        @close-popup="closePopup"
-      ></app-color-controller-close-btn>
+      <!-- close button -->
+      <app-close-button @close-popup="closePopup" />
 
       <!-- first color swatch -->
       <div class="color-controller__sketch-colors">
@@ -65,10 +63,19 @@
 </template>
 
 <script>
-  import AppColorControllerCloseBtn from './AppColorControllerCloseBtn.vue'
+  import AppCloseButton from '../../AppCloseButton.vue'
 
   export default {
+    components: {
+      AppCloseButton
+    },
+
+    inject: ['mainColors'],
+
+    props: ['newColor'],
+
     emits: ['closingPopup', 'changeColorRequest'],
+
     data() {
       return {
         isOpened: false,
@@ -83,32 +90,29 @@
         }
       }
     },
-    inject: ['sketchColors'],
-    props: ['newColor'],
+
     watch: {
       newColor(value) {
         if (value) {
-          this.firstColorStyle.backgroundColor = this.sketchColors.first
-          this.secondColorStyle.backgroundColor = this.sketchColors.second
+          this.firstColorStyle.backgroundColor = this.mainColors.first
+          this.secondColorStyle.backgroundColor = this.mainColors.second
           this.newColorStyle.backgroundColor = this.newColor
           this.isOpened = !this.isOpened
         }
       }
     },
-    components: {
-      AppColorControllerCloseBtn
-    },
+
     methods: {
       closePopup() {
         this.$emit('closingPopup')
         this.isOpened = false
       },
+      changeColor(colorKey) {
+        this.$emit('changeColorRequest', colorKey)
+        this.closePopup()
+      },
       handleCloseClick(e) {
         if (e.target === e.currentTarget) this.closePopup()
-      },
-      changeColor(oldColor) {
-        this.$emit('changeColorRequest', oldColor)
-        this.closePopup()
       }
     }
   }
@@ -176,7 +180,7 @@
   }
 
   .color-controller__color_old {
-    cursor: url('assets/roller.svg') 12 0, pointer;
+    cursor: url('../../assets/roller.svg') 12 0, pointer;
   }
 
   .color-controller__new-color-arrows-popup {
@@ -195,7 +199,7 @@
   .color-controller__arrow {
     width: 80px;
     height: 80px;
-    background-image: url('assets/arrow.svg');
+    background-image: url('../../assets/arrow.svg');
     background-repeat: no-repeat;
   }
 
