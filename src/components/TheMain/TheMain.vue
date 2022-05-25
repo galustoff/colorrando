@@ -1,9 +1,17 @@
 <template>
-  <main>
-    <div class="content-line">
+  <main class="the-main">
+    <div class="the-main__content-line the-main__content-line_upper">
       <the-sketches @invert-request="invertMainColors" />
       <the-randomizer @pick-color="addColorToDump" />
       <the-dump :newColor="newDumpColor" @new-color-request="openController" />
+    </div>
+
+    <div class="the-main__content-line the-main__content-line_lower">
+      <app-trancparency-range
+        v-for="color in mainColors"
+        :key="color"
+        :color="color"
+      />
     </div>
 
     <!-- hidden popup element -->
@@ -20,13 +28,15 @@
   import TheRandomizer from '../TheRandomizer/TheRandomizer.vue'
   import TheDump from '../TheDump/TheDump.vue'
   import TheColorController from '../TheColorController/TheColorController.vue'
+  import AppTrancparencyRange from '../../AppTransparencyRange.vue'
 
   export default {
     components: {
       TheSketches,
       TheRandomizer,
       TheDump,
-      TheColorController
+      TheColorController,
+      AppTrancparencyRange
     },
 
     provide() {
@@ -69,8 +79,23 @@
 </script>
 
 <style>
-  .content-line {
+  .the-main {
     display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  .the-main__content-line {
+    width: 100%;
+    display: flex;
+  }
+
+  .the-main__content-line_upper {
     justify-content: space-evenly;
+  }
+
+  .the-main__content-line_lower {
+    justify-content: center;
+    column-gap: 160px;
   }
 </style>

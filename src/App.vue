@@ -26,6 +26,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    row-gap: 30px;
     position: relative;
   }
 </style>
