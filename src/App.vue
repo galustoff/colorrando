@@ -21,11 +21,11 @@
   .app-container {
     /* production and night modes */
     /* background-color: rgba(0, 0, 0, 0.04); */
+    padding-top: 80px;
     background-color: rgba(0, 0, 0, 0.2);
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     row-gap: 30px;
     position: relative;
   }
