@@ -59,7 +59,7 @@
     margin-bottom: 0;
     transition: height 0.4s ease-out, margin-bottom 0.4s;
     width: 200px;
-    background-color: rgba(255, 255, 255, 1);
+    background-image: url(../../assets/striped_bg_200x80.png);
     position: relative;
   }
 
