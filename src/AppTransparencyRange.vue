@@ -1,5 +1,7 @@
 <template>
-  <div class="transparency-range" :style="style"></div>
+  <div class="transparency-range">
+    <div class="transparency-range__color" :style="style"></div>
+  </div>
 </template>
 
 <script>
@@ -22,5 +24,16 @@
     width: 400px;
     height: 40px;
     border-radius: 10px;
+    background-image: url(./assets/transparency-range_bg.png);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .transparency-range__color {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 </style>
