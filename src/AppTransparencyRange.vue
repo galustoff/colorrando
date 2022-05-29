@@ -1,17 +1,18 @@
 <template>
-  <div class="transparency-range" @click="testAlpha">
+  <div class="transparency-range">
     <div class="transparency-range__container">
       <app-transparency-range-division
         v-for="i in 100"
         :key="i"
         :color="getRgbaColor(i)"
+        :alpha="i"
       ></app-transparency-range-division>
     </div>
   </div>
 </template>
 
 <script>
-  import AppTransparencyRangeDivision from './AppTransparenceRangeDivision.vue'
+  import AppTransparencyRangeDivision from './AppTransparencyRangeDivision.vue'
 
   export default {
     components: {
@@ -38,10 +39,6 @@
     methods: {
       getRgbaColor(i) {
         return this.colorParsedPart + `, ${i / 100})`
-      },
-
-      testAlpha() {
-        console.log(this.colorAlpha)
       }
     }
   }
