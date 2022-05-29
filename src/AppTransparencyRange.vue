@@ -1,18 +1,23 @@
 <template>
-  <div class="transparency-range">
+  <div class="transparency-range" @click="testAlpha">
     <div class="transparency-range__container">
-      <div
-        class="transparency-range__color"
+      <app-transparency-range-division
         v-for="i in 100"
         :key="i"
-        :style="getStyle(101 - i)"
-      ></div>
+        :color="getRgbaColor(i)"
+      ></app-transparency-range-division>
     </div>
   </div>
 </template>
 
 <script>
+  import AppTransparencyRangeDivision from './AppTransparenceRangeDivision.vue'
+
   export default {
+    components: {
+      AppTransparencyRangeDivision
+    },
+
     props: {
       color: String
     },
@@ -23,17 +28,20 @@
        */
       colorParsedPart() {
         return /rgba\((\d+, ){2}\d+/.exec(this.color)[0]
+      },
+
+      colorAlpha() {
+        return /rgba\((\d+,\s){3}(1|0\.\d+)\)/g.exec(this.color)[2]
       }
     },
 
     methods: {
-      getStyle(i) {
-        const alpha = i / 100
-        const color = this.colorParsedPart + `, ${alpha})`
+      getRgbaColor(i) {
+        return this.colorParsedPart + `, ${i / 100})`
+      },
 
-        return {
-          backgroundColor: color
-        }
+      testAlpha() {
+        console.log(this.colorAlpha)
       }
     }
   }
@@ -47,6 +55,7 @@
     background-image: url(./assets/transparency-range_bg.png);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .transparency-range__container {
@@ -56,9 +65,6 @@
     bottom: 0;
     left: 0;
     display: flex;
-  }
-
-  .transparency-range__color {
-    flex-grow: 1;
+    flex-direction: row-reverse;
   }
 </style>
