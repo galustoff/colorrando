@@ -1,19 +1,14 @@
 <template>
-  <div
-    :class="{
-      'transparency-range__division': true,
-      'transparency-range__division_bright': this.alpha > 50,
-      'transparency-range__division_pale': this.alpha <= 50
-    }"
-    :style="bgc"
-  ></div>
+  <div class="transparency-range__division" :style="bgc">
+    <div v-if="isActive" class="transparency-range__slider"></div>
+  </div>
 </template>
 
 <script>
   export default {
     props: {
       color: String,
-      alpha: Number
+      isActive: Boolean
     },
 
     computed: {
@@ -37,18 +32,25 @@
   .transparency-range__division:hover::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: -8px;
     right: -2px;
-    bottom: 0;
+    bottom: -8px;
     left: -2px;
+    background-color: darkred;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .transparency-range__slider {
+    position: absolute;
+    top: -8px;
+    right: -2px;
+    bottom: -8px;
+    left: -2px;
+    background-color: darkblue;
+    border-radius: 10px;
+    overflow: hidden;
     z-index: 1;
-  }
-
-  .transparency-range__division_bright:hover::after {
-    background-color: darkorange;
-  }
-
-  .transparency-range__division_pale:hover::after {
-    background-color: darkcyan;
   }
 </style>
