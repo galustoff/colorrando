@@ -1,13 +1,15 @@
 <template>
   <div class="transparency-range">
+    <div class="transparency-range__ear" :style="leftEarStyle"></div>
     <div class="transparency-range__container">
       <app-transparency-range-division
         v-for="i in 100"
         :key="i"
         :color="getRgbaColor(i)"
         :alpha="i"
-      ></app-transparency-range-division>
+      />
     </div>
+    <div class="transparency-range__ear"></div>
   </div>
 </template>
 
@@ -33,6 +35,12 @@
 
       colorAlpha() {
         return /rgba\((\d+,\s){3}(1|0\.\d+)\)/g.exec(this.color)[2]
+      },
+
+      leftEarStyle() {
+        return {
+          backgroundColor: /rgba\((\d+, ){2}\d+/.exec(this.color)[0] + ', 1)'
+        }
       }
     },
 
@@ -50,18 +58,20 @@
     height: 40px;
     border-radius: 10px;
     background-image: url(./assets/transparency-range_bg.png);
-    position: relative;
     overflow: hidden;
-    cursor: pointer;
+    display: flex;
+  }
+
+  .transparency-range__ear {
+    width: 16px;
+    height: 40px;
   }
 
   .transparency-range__container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     display: flex;
     flex-direction: row-reverse;
+    cursor: pointer;
+    width: 400px;
+    height: 40px;
   }
 </style>
