@@ -8,9 +8,13 @@
 
     <div class="the-main__content-line the-main__content-line_lower">
       <app-trancparency-range
-        v-for="color in mainColors"
-        :key="color"
-        :color="color"
+        :color="mainColors.first"
+        :shadow="mainColors.second"
+      />
+
+      <app-trancparency-range
+        :color="mainColors.second"
+        :shadow="mainColors.first"
       />
     </div>
 

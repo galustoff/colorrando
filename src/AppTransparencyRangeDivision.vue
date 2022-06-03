@@ -1,6 +1,12 @@
 <template>
   <div class="transparency-range__division" :style="bgc">
-    <div v-if="isActive" class="transparency-range__slider"></div>
+    <div
+      v-if="isActive"
+      class="transparency-range__slider-outer"
+      :style="boxShadow"
+    >
+      <div class="transparency-range__slider-inner" :style="bgc"></div>
+    </div>
   </div>
 </template>
 
@@ -8,6 +14,7 @@
   export default {
     props: {
       color: String,
+      shadow: String,
       isActive: Boolean
     },
 
@@ -15,6 +22,12 @@
       bgc() {
         return {
           backgroundColor: this.color
+        }
+      },
+
+      boxShadow() {
+        return {
+          boxShadow: `1px 1px 4px ${this.shadow}, -1px -1px 4px ${this.shadow}`
         }
       }
     },
@@ -42,15 +55,23 @@
     z-index: 2;
   }
 
-  .transparency-range__slider {
+  .transparency-range__slider-outer {
     position: absolute;
     top: -8px;
     right: -2px;
     bottom: -8px;
     left: -2px;
-    background-color: darkblue;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     overflow: hidden;
     z-index: 1;
+  }
+
+  .transparency-range__slider-inner {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
   }
 </style>
