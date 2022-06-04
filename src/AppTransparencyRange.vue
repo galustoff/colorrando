@@ -10,7 +10,6 @@
         :key="i"
         :color="getRgbaColor(i)"
         :isActive="i === colorAlpha * 100"
-        :shadow="fullShadow"
       />
     </div>
   </div>
@@ -25,8 +24,7 @@
     },
 
     props: {
-      color: String,
-      shadow: String
+      color: String
     },
 
     computed: {
@@ -35,10 +33,6 @@
        */
       colorParsedPart() {
         return /rgba\((\d+, ){2}\d+/.exec(this.color)[0]
-      },
-
-      fullShadow() {
-        return /rgba\((\d+, ){2}\d+/.exec(this.shadow)[0] + ', 0.8)'
       },
 
       colorAlpha() {

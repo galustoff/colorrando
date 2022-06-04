@@ -7,15 +7,8 @@
     </div>
 
     <div class="the-main__content-line the-main__content-line_lower">
-      <app-trancparency-range
-        :color="mainColors.first"
-        :shadow="mainColors.second"
-      />
-
-      <app-trancparency-range
-        :color="mainColors.second"
-        :shadow="mainColors.first"
-      />
+      <app-trancparency-range :color="mainColors.first" />
+      <app-trancparency-range :color="mainColors.second" />
     </div>
 
     <!-- hidden popup element -->
