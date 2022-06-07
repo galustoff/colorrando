@@ -1,7 +1,7 @@
 <template>
   <div class="the-sketches">
     <sketches-list />
-    <app-button :set="buttonSet" @invert-request="invertRequest"></app-button>
+    <app-button :set="buttonSet" @invert-request="invertColors" />
   </div>
 </template>
 
@@ -15,20 +15,37 @@
       SketchesList
     },
 
-    emits: ['invertRequest'],
+    provide() {
+      return {
+        colors: this.colors
+      }
+    },
+
+    props: {
+      color0: String,
+      color1: String
+    },
 
     data() {
       return {
         buttonSet: {
           text: 'INVERT?',
           event: 'invertRequest'
+        },
+
+        colors: {
+          main: this.color0,
+          back: this.color1
         }
       }
     },
 
     methods: {
-      invertRequest() {
-        this.$emit('invertRequest')
+      invertColors() {
+        const temporary = this.colors.main
+
+        this.colors.main = this.colors.back
+        this.colors.back = temporary
       }
     }
   }

@@ -1,15 +1,18 @@
 <template>
   <main class="the-main">
     <div class="the-main__content-line the-main__content-line_upper">
-      <the-sketches @invert-request="invertMainColors" />
+      <the-sketches
+        :color-0="mainColors[0].full"
+        :color-1="mainColors[1].full"
+      />
       <the-randomizer @pick-color="addColorToDump" />
       <the-dump :newColor="newDumpColor" @new-color-request="openController" />
     </div>
 
-    <div class="the-main__content-line the-main__content-line_lower">
+    <!-- <div class="the-main__content-line the-main__content-line_lower">
       <app-trancparency-range :color="mainColors.first" />
       <app-trancparency-range :color="mainColors.second" />
-    </div>
+    </div> -->
 
     <!-- hidden popup element -->
     <the-color-controller
@@ -36,30 +39,37 @@
       AppTrancparencyRange
     },
 
-    provide() {
-      return {
-        mainColors: this.mainColors
-      }
-    },
+    // provide() {
+    //   return {
+    //     mainColors: this.mainColors
+    //   }
+    // },
 
     data() {
       return {
         newDumpColor: '',
         newMainColor: '',
-        mainColors: {
-          first: 'rgba(0, 0, 0, 1)',
-          second: 'rgba(255, 255, 255, 1)'
-        }
+        // mainColors: {
+        //   first: 'rgba(0, 0, 0, 1)',
+        //   second: 'rgba(255, 255, 255, 1)'
+        // }
+        mainColors: [
+          {
+            part: 'rgba(0, 0, 0, ',
+            alpha: 1,
+            full: 'rgba(0, 0, 0, 1)'
+          },
+
+          {
+            part: 'rgba(255, 255, 255, ',
+            alpha: 1,
+            full: 'rgba(255, 255, 255, 1)'
+          }
+        ]
       }
     },
+
     methods: {
-      invertMainColors() {
-        const tempColor = this.mainColors.first
-
-        this.mainColors.first = this.mainColors.second
-        this.mainColors.second = tempColor
-      },
-
       addColorToDump(color) {
         this.newDumpColor = color
       },
