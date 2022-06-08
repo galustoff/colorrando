@@ -9,10 +9,16 @@
       <the-dump :newColor="newDumpColor" @new-color-request="openController" />
     </div>
 
-    <!-- <div class="the-main__content-line the-main__content-line_lower">
-      <app-trancparency-range :color="mainColors.first" />
-      <app-trancparency-range :color="mainColors.second" />
-    </div> -->
+    <div class="the-main__content-line the-main__content-line_lower">
+      <app-trancparency-range
+        :color-part="mainColors[0].part"
+        :current-alpha="mainColors[0].alpha"
+      />
+      <app-trancparency-range
+        :color-part="mainColors[1].part"
+        :current-alpha="mainColors[1].alpha"
+      />
+    </div>
 
     <!-- hidden popup element -->
     <the-color-controller
@@ -41,20 +47,11 @@
       AppTrancparencyRange
     },
 
-    // provide() {
-    //   return {
-    //     mainColors: this.mainColors
-    //   }
-    // },
-
     data() {
       return {
         newDumpColor: '',
         newMainColor: '',
-        // mainColors: {
-        //   first: 'rgba(0, 0, 0, 1)',
-        //   second: 'rgba(255, 255, 255, 1)'
-        // }
+
         mainColors: [
           {
             part: 'rgba(0, 0, 0, ',

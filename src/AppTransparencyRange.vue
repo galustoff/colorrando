@@ -9,7 +9,7 @@
         v-for="i in 100"
         :key="i"
         :color="getRgbaColor(i)"
-        :isActive="i === colorAlpha * 100"
+        :isActive="i === currentAlpha * 100"
       />
     </div>
   </div>
@@ -24,31 +24,21 @@
     },
 
     props: {
-      color: String
+      colorPart: String,
+      currentAlpha: Number
     },
 
     computed: {
-      /**
-       * this func returns a string like 'rgba(232, 23, 88' based on color prop
-       */
-      colorParsedPart() {
-        return /rgba\((\d+, ){2}\d+/.exec(this.color)[0]
-      },
-
-      colorAlpha() {
-        return /rgba\((\d+,\s){3}(1|0\.\d+)\)/g.exec(this.color)[2]
-      },
-
       leftEarStyle() {
         return {
-          backgroundColor: /rgba\((\d+, ){2}\d+/.exec(this.color)[0] + ', 1)'
+          backgroundColor: this.colorPart + '1)'
         }
       }
     },
 
     methods: {
       getRgbaColor(i) {
-        return this.colorParsedPart + `, ${i / 100})`
+        return this.colorPart + `${i / 100})`
       }
     }
   }
