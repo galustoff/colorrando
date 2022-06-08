@@ -34,18 +34,18 @@
         },
 
         colors: {
-          main: this.color0,
-          back: this.color1
+          color0: this.color0,
+          color1: this.color1
         }
       }
     },
 
     methods: {
       invertColors() {
-        const temporary = this.colors.main
+        const temporary = this.colors.color0
 
-        this.colors.main = this.colors.back
-        this.colors.back = temporary
+        this.colors.color0 = this.colors.color1
+        this.colors.color1 = temporary
       }
     }
   }

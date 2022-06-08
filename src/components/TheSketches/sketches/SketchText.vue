@@ -7,13 +7,13 @@
 
 <script>
   export default {
-    inject: ['mainColors'],
+    inject: ['colors'],
 
     computed: {
       style() {
         return {
-          color: this.mainColors.first,
-          backgroundColor: this.mainColors.second,
+          color: this.colors.color0,
+          backgroundColor: this.colors.color1,
           fontFamily: 'sans-serif',
           padding: '10px',
           minHeight: '120px'

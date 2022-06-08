@@ -11,18 +11,18 @@
 
 <script>
   export default {
-    inject: ['mainColors'],
+    inject: ['colors'],
     computed: {
       rightHalfStyle() {
         return {
-          color: this.mainColors.second,
-          backgroundColor: this.mainColors.first
+          color: this.colors.color1,
+          backgroundColor: this.colors.color0
         }
       },
       leftHalfStyle() {
         return {
-          color: this.mainColors.first,
-          backgroundColor: this.mainColors.second
+          color: this.colors.color0,
+          backgroundColor: this.colors.color1
         }
       }
     }

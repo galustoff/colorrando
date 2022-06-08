@@ -12,12 +12,12 @@
     computed: {
       rightHalfStyle() {
         return {
-          backgroundColor: this.colors.back
+          backgroundColor: this.colors.color1
         }
       },
       leftHalfStyle() {
         return {
-          backgroundColor: this.colors.main
+          backgroundColor: this.colors.color0
         }
       }
     }
