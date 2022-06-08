@@ -36,17 +36,21 @@
         colors: {
           color0: this.color0,
           color1: this.color1
-        }
+        },
+
+        inverted: false
       }
     },
 
     watch: {
       color0(value) {
-        this.colors.color0 = value
+        if (this.inverted) this.colors.color1 = value
+        else this.colors.color0 = value
       },
 
       color1(value) {
-        this.colors.color1 = value
+        if (this.inverted) this.colors.color0 = value
+        else this.colors.color1 = value
       }
     },
 
@@ -56,6 +60,8 @@
 
         this.colors.color0 = this.colors.color1
         this.colors.color1 = temporary
+
+        this.inverted = !this.inverted
       }
     }
   }
