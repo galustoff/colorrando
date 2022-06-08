@@ -9,7 +9,7 @@
         v-for="i in 100"
         :key="i"
         :color="getRgbaColor(i)"
-        :isActive="i === currentAlpha * 100"
+        :isActive="i === Math.floor(currentAlpha * 100)"
       />
     </div>
   </div>
@@ -25,7 +25,7 @@
 
     props: {
       colorPart: String,
-      currentAlpha: Number
+      currentAlpha: String
     },
 
     computed: {
