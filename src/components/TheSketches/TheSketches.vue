@@ -40,6 +40,16 @@
       }
     },
 
+    watch: {
+      color0(value) {
+        this.colors.color0 = value
+      },
+
+      color1(value) {
+        this.colors.color1 = value
+      }
+    },
+
     methods: {
       invertColors() {
         const temporary = this.colors.color0

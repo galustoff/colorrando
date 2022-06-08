@@ -17,6 +17,8 @@
     <!-- hidden popup element -->
     <the-color-controller
       :newColor="newMainColor"
+      :color-0="mainColors[0].full"
+      :color-1="mainColors[1].full"
       @closing-popup="newMainColor = ''"
       @change-color-request="changeMainColor"
     />
@@ -78,8 +80,15 @@
         this.newMainColor = newColor
       },
 
-      changeMainColor(colorKey) {
-        this.mainColors[colorKey] = this.newMainColor
+      changeMainColor(idx) {
+        const parsedColor = /(rgba\(\d+, \d+, \d+, )(1|(0\.\d+))\)/g.exec(
+          this.newMainColor
+        )
+
+        this.mainColors[idx].full = parsedColor[0]
+        this.mainColors[idx].part = parsedColor[1]
+        this.mainColors[idx].alpha =
+          parsedColor[2] === '1' ? 1 : Number(parsedColor[2]) * 100
       }
     }
   }

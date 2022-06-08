@@ -13,10 +13,7 @@
 
       <!-- first color swatch -->
       <div class="color-controller__sketch-colors">
-        <div
-          class="color-controller__color-container"
-          @click="changeColor('first')"
-        >
+        <div class="color-controller__color-container" @click="changeColor(0)">
           <div class="color-controller__color-substrate">
             <div
               class="color-controller__color color-controller__color_old"
@@ -26,10 +23,7 @@
         </div>
 
         <!-- second color swatch -->
-        <div
-          class="color-controller__color-container"
-          @click="changeColor('second')"
-        >
+        <div class="color-controller__color-container" @click="changeColor(1)">
           <div class="color-controller__color-substrate">
             <div
               class="color-controller__color color-controller__color_old"
@@ -70,9 +64,11 @@
       AppCloseButton
     },
 
-    inject: ['mainColors'],
-
-    props: ['newColor'],
+    props: {
+      newColor: String,
+      color0: String,
+      color1: String
+    },
 
     emits: ['closingPopup', 'changeColorRequest'],
 
@@ -94,8 +90,8 @@
     watch: {
       newColor(value) {
         if (value) {
-          this.firstColorStyle.backgroundColor = this.mainColors.first
-          this.secondColorStyle.backgroundColor = this.mainColors.second
+          this.firstColorStyle.backgroundColor = this.color0
+          this.secondColorStyle.backgroundColor = this.color1
           this.newColorStyle.backgroundColor = this.newColor
           this.isOpened = !this.isOpened
         }
@@ -107,10 +103,12 @@
         this.$emit('closingPopup')
         this.isOpened = false
       },
+
       changeColor(colorKey) {
         this.$emit('changeColorRequest', colorKey)
         this.closePopup()
       },
+
       handleCloseClick(e) {
         if (e.target === e.currentTarget) this.closePopup()
       }
