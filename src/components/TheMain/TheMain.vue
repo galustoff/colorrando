@@ -11,12 +11,11 @@
 
     <div class="the-main__content-line the-main__content-line_lower">
       <app-trancparency-range
-        :color-part="mainColors[0].part"
-        :current-alpha="mainColors[0].alpha"
-      />
-      <app-trancparency-range
-        :color-part="mainColors[1].part"
-        :current-alpha="mainColors[1].alpha"
+        v-for="color in mainColors"
+        :color-idx="color.idx"
+        :color-part="color.part"
+        :current-alpha="color.alpha"
+        @change-intensity="changeIntensity"
       />
     </div>
 
@@ -54,12 +53,14 @@
 
         mainColors: [
           {
+            idx: 0,
             part: 'rgba(0, 0, 0, ',
             alpha: 100,
             full: 'rgba(0, 0, 0, 1)'
           },
 
           {
+            idx: 1,
             part: 'rgba(255, 255, 255, ',
             alpha: 100,
             full: 'rgba(255, 255, 255, 1)'
@@ -85,6 +86,13 @@
         this.mainColors[idx].full = parsedColor[0]
         this.mainColors[idx].part = parsedColor[1]
         this.mainColors[idx].alpha = Math.floor(parsedColor[2] * 100)
+      },
+
+      changeIntensity(colorIdx, value) {
+        const color = this.mainColors[colorIdx]
+
+        color.alpha = value
+        color.full = color.part + `${value === 1 ? 1 : value / 100})`
       }
     }
   }

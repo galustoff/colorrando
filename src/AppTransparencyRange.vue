@@ -10,6 +10,7 @@
         :key="i"
         :color="getRgbaColor(i)"
         :isActive="intensityScale[i]"
+        @click="changeIntensity(i)"
       />
     </div>
   </div>
@@ -24,6 +25,7 @@
     },
 
     props: {
+      colorIdx: Number,
       colorPart: String,
       currentAlpha: Number
     },
@@ -67,6 +69,10 @@
         }
 
         this.intensityScale[this.currentAlpha] = true
+      },
+
+      changeIntensity(value) {
+        this.$emit('changeIntensity', this.colorIdx, value)
       }
     }
   }
