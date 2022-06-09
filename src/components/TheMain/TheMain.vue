@@ -55,13 +55,13 @@
         mainColors: [
           {
             part: 'rgba(0, 0, 0, ',
-            alpha: '1',
+            alpha: 100,
             full: 'rgba(0, 0, 0, 1)'
           },
 
           {
             part: 'rgba(255, 255, 255, ',
-            alpha: '1',
+            alpha: 100,
             full: 'rgba(255, 255, 255, 1)'
           }
         ]
@@ -84,7 +84,7 @@
 
         this.mainColors[idx].full = parsedColor[0]
         this.mainColors[idx].part = parsedColor[1]
-        this.mainColors[idx].alpha = parsedColor[2]
+        this.mainColors[idx].alpha = Math.floor(parsedColor[2] * 100)
       }
     }
   }

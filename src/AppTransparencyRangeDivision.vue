@@ -1,8 +1,6 @@
 <template>
   <div class="transparency-range__division" :style="bgc">
-    <div v-if="isActive" class="transparency-range__slider-outer">
-      <!-- <div class="transparency-range__slider-inner" :style="bgc"></div> -->
-    </div>
+    <div v-if="isActive" class="transparency-range__slider"></div>
   </div>
 </template>
 
@@ -31,7 +29,7 @@
     position: relative;
   }
 
-  .transparency-range__slider-outer {
+  .transparency-range__slider {
     position: absolute;
     top: -8px;
     right: -2px;
@@ -43,13 +41,5 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5), -2px -2px 3px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     z-index: 1;
-  }
-
-  .transparency-range__slider-inner {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
   }
 </style>

@@ -9,7 +9,7 @@
         v-for="i in 100"
         :key="i"
         :color="getRgbaColor(i)"
-        :isActive="i === Math.floor(currentAlpha * 100)"
+        :isActive="intensityScale[i]"
       />
     </div>
   </div>
@@ -25,7 +25,13 @@
 
     props: {
       colorPart: String,
-      currentAlpha: String
+      currentAlpha: Number
+    },
+
+    data() {
+      return {
+        intensityScale: []
+      }
     },
 
     computed: {
@@ -36,9 +42,31 @@
       }
     },
 
+    watch: {
+      currentAlpha(value) {
+        this.intensityScale[this.intensityScale[0]] = false
+        this.intensityScale[value] = true
+        this.intensityScale[0] = value
+      }
+    },
+
+    mounted() {
+      this.fillIntensityScale()
+    },
+
     methods: {
       getRgbaColor(i) {
         return this.colorPart + `${i / 100})`
+      },
+
+      fillIntensityScale() {
+        this.intensityScale[0] = this.currentAlpha
+
+        for (let i = 1; i < 101; i++) {
+          this.intensityScale[i] = false
+        }
+
+        this.intensityScale[this.currentAlpha] = true
       }
     }
   }
