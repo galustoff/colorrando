@@ -16,6 +16,7 @@
         :color-part="color.part"
         :src-alpha="color.alpha"
         @change-main-color-intensity="changeMainColorIntensity"
+        @wheel="mouseWheel($event, color.idx)"
       />
     </div>
 
@@ -93,6 +94,16 @@
 
         color.alpha = value
         color.full = color.part + `${value === 1 ? 1 : value / 100})`
+      },
+
+      mouseWheel(e, colorIdx) {
+        const color = this.mainColors[colorIdx]
+        let newAlpha = (color.alpha += Math.floor(e.deltaY / 25))
+
+        if (newAlpha < 1) newAlpha = 1
+        if (newAlpha > 100) newAlpha = 100
+
+        color.alpha = newAlpha
       }
     }
   }

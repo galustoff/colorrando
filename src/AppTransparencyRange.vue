@@ -30,6 +30,8 @@
       srcAlpha: Number
     },
 
+    emits: ['changeMainColorIntensity'],
+
     data() {
       return {
         currentAlpha: this.srcAlpha,
@@ -61,7 +63,7 @@
       },
 
       fillIntensityScale() {
-        this.intensityScale[0] = this.srcAlpha
+        this.currentAlpha = this.srcAlpha
 
         for (let i = 1; i < 101; i++) {
           this.intensityScale[i] = false
@@ -71,9 +73,9 @@
       },
 
       changeScaleIntensity(value) {
-        this.intensityScale[this.intensityScale[0]] = false
+        this.intensityScale[this.currentAlpha] = false
         this.intensityScale[value] = true
-        this.intensityScale[0] = value
+        this.currentAlpha = value
       },
 
       changeIntensity(value) {
@@ -117,7 +119,7 @@
     left: 8px;
     display: flex;
     flex-direction: row-reverse;
-    cursor: pointer;
+    cursor: url('./assets/scrollable.png') 10 0, pointer;
     width: 400px;
     height: 40px;
     overflow: visible;
