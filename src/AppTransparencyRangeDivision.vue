@@ -17,9 +17,7 @@
           backgroundColor: this.color
         }
       }
-    },
-
-    methods: {}
+    }
   }
 </script>
 

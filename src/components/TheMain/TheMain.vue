@@ -14,8 +14,8 @@
         v-for="color in mainColors"
         :color-idx="color.idx"
         :color-part="color.part"
-        :current-alpha="color.alpha"
-        @change-intensity="changeIntensity"
+        :src-alpha="color.alpha"
+        @change-main-color-intensity="changeMainColorIntensity"
       />
     </div>
 
@@ -88,7 +88,7 @@
         this.mainColors[idx].alpha = Math.floor(parsedColor[2] * 100)
       },
 
-      changeIntensity(colorIdx, value) {
+      changeMainColorIntensity(colorIdx, value) {
         const color = this.mainColors[colorIdx]
 
         color.alpha = value

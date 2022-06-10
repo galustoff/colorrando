@@ -27,11 +27,12 @@
     props: {
       colorIdx: Number,
       colorPart: String,
-      currentAlpha: Number
+      srcAlpha: Number
     },
 
     data() {
       return {
+        currentAlpha: this.srcAlpha,
         intensityScale: []
       }
     },
@@ -45,10 +46,8 @@
     },
 
     watch: {
-      currentAlpha(value) {
-        this.intensityScale[this.intensityScale[0]] = false
-        this.intensityScale[value] = true
-        this.intensityScale[0] = value
+      srcAlpha(value) {
+        if (value !== this.currentAlpha) this.changeScaleIntensity(value)
       }
     },
 
@@ -62,17 +61,24 @@
       },
 
       fillIntensityScale() {
-        this.intensityScale[0] = this.currentAlpha
+        this.intensityScale[0] = this.srcAlpha
 
         for (let i = 1; i < 101; i++) {
           this.intensityScale[i] = false
         }
 
-        this.intensityScale[this.currentAlpha] = true
+        this.intensityScale[this.srcAlpha] = true
+      },
+
+      changeScaleIntensity(value) {
+        this.intensityScale[this.intensityScale[0]] = false
+        this.intensityScale[value] = true
+        this.intensityScale[0] = value
       },
 
       changeIntensity(value) {
-        this.$emit('changeIntensity', this.colorIdx, value)
+        this.changeScaleIntensity(value)
+        this.$emit('changeMainColorIntensity', this.colorIdx, value)
       }
     }
   }
