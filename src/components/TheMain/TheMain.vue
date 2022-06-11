@@ -2,8 +2,10 @@
   <main class="the-main">
     <div class="the-main__content-line the-main__content-line_upper">
       <the-sketches
-        :color-0="mainColors[0].full"
-        :color-1="mainColors[1].full"
+        :color-0-part="mainColors[0].part"
+        :color-0-alpha="mainColors[0].alpha"
+        :color-1-part="mainColors[1].part"
+        :color-1-alpha="mainColors[1].alpha"
       />
       <the-randomizer @pick-color="addColorToDump" />
       <the-dump :newColor="newDumpColor" @new-color-request="openController" />
@@ -12,11 +14,10 @@
     <div class="the-main__content-line the-main__content-line_lower">
       <app-trancparency-range
         v-for="color in mainColors"
-        :color-idx="color.idx"
+        :key="color.key"
         :color-part="color.part"
         :src-alpha="color.alpha"
-        @change-main-color-intensity="changeMainColorIntensity"
-        @wheel="mouseWheel($event, color.idx)"
+        @wheel="mouseWheel($event, color)"
       />
     </div>
 
@@ -54,14 +55,14 @@
 
         mainColors: [
           {
-            idx: 0,
+            key: 0,
             part: 'rgba(0, 0, 0, ',
             alpha: 100,
             full: 'rgba(0, 0, 0, 1)'
           },
 
           {
-            idx: 1,
+            key: 1,
             part: 'rgba(255, 255, 255, ',
             alpha: 100,
             full: 'rgba(255, 255, 255, 1)'
@@ -96,8 +97,7 @@
         color.full = color.part + `${value === 1 ? 1 : value / 100})`
       },
 
-      mouseWheel(e, colorIdx) {
-        const color = this.mainColors[colorIdx]
+      mouseWheel(e, color) {
         let newAlpha = (color.alpha += Math.floor(e.deltaY / 25))
 
         if (newAlpha < 1) newAlpha = 1

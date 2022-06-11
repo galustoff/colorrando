@@ -22,8 +22,10 @@
     },
 
     props: {
-      color0: String,
-      color1: String
+      color0Part: String,
+      color0Alpha: Number,
+      color1Part: String,
+      color1Alpha: Number
     },
 
     data() {
@@ -34,8 +36,8 @@
         },
 
         colors: {
-          color0: this.color0,
-          color1: this.color1
+          color0: '',
+          color1: ''
         },
 
         inverted: false
@@ -43,15 +45,26 @@
     },
 
     watch: {
-      color0(value) {
-        if (this.inverted) this.colors.color1 = value
-        else this.colors.color0 = value
+      color0Part() {
+        this.makeColor(0)
       },
 
-      color1(value) {
-        if (this.inverted) this.colors.color0 = value
-        else this.colors.color1 = value
+      color0Alpha() {
+        this.makeColor(0)
+      },
+
+      color1Part() {
+        this.makeColor(1)
+      },
+
+      color1Alpha() {
+        this.makeColor(1)
       }
+    },
+
+    mounted() {
+      this.makeColor(0)
+      this.makeColor(1)
     },
 
     methods: {
@@ -62,6 +75,15 @@
         this.colors.color1 = temporary
 
         this.inverted = !this.inverted
+      },
+
+      makeColor(idx) {
+        const key = `color${this.inverted ? Number(!idx) : idx}`
+
+        this.colors[key] =
+          this.$props[`color${idx}Part`] +
+          this.$props[`color${idx}Alpha`] / 100 +
+          ')'
       }
     }
   }

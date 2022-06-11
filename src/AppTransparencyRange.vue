@@ -10,7 +10,6 @@
         :key="i"
         :color="getRgbaColor(i)"
         :isActive="intensityScale[i]"
-        @click="changeIntensity(i)"
       />
     </div>
   </div>
@@ -25,16 +24,12 @@
     },
 
     props: {
-      colorIdx: Number,
       colorPart: String,
       srcAlpha: Number
     },
 
-    emits: ['changeMainColorIntensity'],
-
     data() {
       return {
-        currentAlpha: this.srcAlpha,
         intensityScale: []
       }
     },
@@ -49,7 +44,7 @@
 
     watch: {
       srcAlpha(value) {
-        if (value !== this.currentAlpha) this.changeScaleIntensity(value)
+        this.changeScaleIntensity(value)
       }
     },
 
@@ -63,7 +58,7 @@
       },
 
       fillIntensityScale() {
-        this.currentAlpha = this.srcAlpha
+        this.intensityScale[0] = this.srcAlpha
 
         for (let i = 1; i < 101; i++) {
           this.intensityScale[i] = false
@@ -73,14 +68,9 @@
       },
 
       changeScaleIntensity(value) {
-        this.intensityScale[this.currentAlpha] = false
+        this.intensityScale[this.intensityScale[0]] = false
         this.intensityScale[value] = true
-        this.currentAlpha = value
-      },
-
-      changeIntensity(value) {
-        this.changeScaleIntensity(value)
-        this.$emit('changeMainColorIntensity', this.colorIdx, value)
+        this.intensityScale[0] = value
       }
     }
   }
