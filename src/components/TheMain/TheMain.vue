@@ -14,7 +14,7 @@
     <div class="the-main__content-line the-main__content-line_lower">
       <app-trancparency-range
         v-for="color in mainColors"
-        :key="color.key"
+        :key="color"
         :color-part="color.part"
         :src-alpha="color.alpha"
         @wheel="mouseWheel($event, color)"
@@ -39,6 +39,8 @@
   import TheColorController from '../TheColorController/TheColorController.vue'
   import AppTrancparencyRange from '../../AppTransparencyRange.vue'
 
+  import MainColor from '../../js/MainColor.js'
+
   export default {
     components: {
       TheSketches,
@@ -52,21 +54,9 @@
       return {
         newDumpColor: '',
         newMainColor: '',
-
         mainColors: [
-          {
-            key: 0,
-            part: 'rgba(0, 0, 0, ',
-            alpha: 100,
-            full: 'rgba(0, 0, 0, 1)'
-          },
-
-          {
-            key: 1,
-            part: 'rgba(255, 255, 255, ',
-            alpha: 100,
-            full: 'rgba(255, 255, 255, 1)'
-          }
+          new MainColor(0, 0, 0, 100),
+          new MainColor(255, 255, 255, 100)
         ]
       }
     },
@@ -81,20 +71,7 @@
       },
 
       changeMainColor(idx) {
-        const parsedColor = /(rgba\(\d+, \d+, \d+, )(1|(0\.\d+))\)/g.exec(
-          this.newMainColor
-        )
-
-        this.mainColors[idx].full = parsedColor[0]
-        this.mainColors[idx].part = parsedColor[1]
-        this.mainColors[idx].alpha = Math.floor(parsedColor[2] * 100)
-      },
-
-      changeMainColorIntensity(colorIdx, value) {
-        const color = this.mainColors[colorIdx]
-
-        color.alpha = value
-        color.full = color.part + `${value === 1 ? 1 : value / 100})`
+        this.mainColors[idx].full = this.newMainColor
       },
 
       mouseWheel(e, color) {
