@@ -21,6 +21,14 @@
       />
     </div>
 
+    <div class="the-main__content-line the-main__content-line_lower">
+      <app-color-string
+        v-for="color in mainColors"
+        :key="color.key"
+        :color-string="color.full"
+      />
+    </div>
+
     <!-- hidden popup element -->
     <the-color-controller
       :newColor="newMainColor"
@@ -38,6 +46,7 @@
   import TheDump from '../TheDump/TheDump.vue'
   import TheColorController from '../TheColorController/TheColorController.vue'
   import AppTrancparencyRange from '../../AppTransparencyRange.vue'
+  import AppColorString from '../../AppColorString.vue'
 
   export default {
     components: {
@@ -45,7 +54,8 @@
       TheRandomizer,
       TheDump,
       TheColorController,
-      AppTrancparencyRange
+      AppTrancparencyRange,
+      AppColorString
     },
 
     data() {
