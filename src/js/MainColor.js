@@ -5,7 +5,7 @@ export default class MainColor {
     this.alphaChannel = a
   }
 
-  parseColor(color) {
+  _parseColor(color) {
     return /(rgba\(\d+, \d+, \d+, )(1|(0\.\d+))\)/g.exec(color)
   }
 
@@ -14,7 +14,7 @@ export default class MainColor {
   }
 
   set full(color) {
-    const parsed = this.parseColor(color)
+    const parsed = this._parseColor(color)
 
     this.fullColor = parsed[0]
     this.colorPart = parsed[1]

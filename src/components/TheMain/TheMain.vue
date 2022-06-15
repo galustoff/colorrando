@@ -17,14 +17,15 @@
         :key="color"
         :color-part="color.part"
         :src-alpha="color.alpha"
-        @wheel="mouseWheel($event, color)"
+        @wheel.exact="changeTransparency($event, color)"
+        @wheel.shift="changeSaturation(color)"
       />
     </div>
 
     <div class="the-main__content-line the-main__content-line_lower">
       <app-color-string
         v-for="color in mainColors"
-        :key="color.key"
+        :key="color"
         :color-string="color.full"
       />
     </div>
@@ -84,13 +85,17 @@
         this.mainColors[idx].full = this.newMainColor
       },
 
-      mouseWheel(e, color) {
+      changeTransparency(e, color) {
         let newAlpha = (color.alpha += Math.floor(e.deltaY / 25))
 
         if (newAlpha < 1) newAlpha = 1
         if (newAlpha > 100) newAlpha = 100
 
         color.alpha = newAlpha
+      },
+
+      changeSaturation(color) {
+        console.log(color)
       }
     }
   }

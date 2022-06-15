@@ -1,6 +1,6 @@
 <template>
   <div class="color-string">
-    <input type="text" readonly v-model="colorString" />
+    <input type="text" v-model="colorString" />
     <app-button :set="copyButtonSet" @copy-color="copyColor" />
   </div>
 </template>
