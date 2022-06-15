@@ -18,7 +18,7 @@
         :color-part="color.part"
         :src-alpha="color.alpha"
         @wheel.exact="changeTransparency($event, color)"
-        @wheel.shift="changeSaturation(color)"
+        @wheel.shift="changeSaturation($event, color)"
       />
     </div>
 
@@ -94,8 +94,8 @@
         color.alpha = newAlpha
       },
 
-      changeSaturation(color) {
-        console.log(color)
+      changeSaturation(e, color) {
+        color.changeIntensity(e.deltaY)
       }
     }
   }
