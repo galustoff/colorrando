@@ -21,7 +21,7 @@
 
       <div class="the-main-range-explanation">
         <div class="the-main-range-explanation_pic"></div>
-        <p class="the-main-range-explanation_text">or Shift +</p>
+        <p class="the-main-range-explanation_text">&nbsp;or Shift +</p>
         <div class="the-main-range-explanation_pic"></div>
       </div>
 
@@ -106,7 +106,7 @@
       },
 
       changeSaturation(e, color) {
-        color.changeIntensity(e.deltaY)
+        color.changeIntensity(-e.deltaY)
       }
     }
   }

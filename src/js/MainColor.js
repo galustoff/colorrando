@@ -23,7 +23,7 @@ export default class MainColor {
     if (!parsedRgb.includes(limit)) {
       const value = (deltaY / Math.abs(deltaY)) * 4
       const changedRgb = parsedRgb.map((i) => {
-        let newValue = (i += value)
+        let newValue = i + value
 
         if (newValue > 255) newValue = 255
         if (newValue < 0) newValue = 0
