@@ -130,7 +130,7 @@
 
   .the-main__content-line_lower {
     justify-content: center;
-    column-gap: 160px;
+    column-gap: 280px;
   }
 
   .the-main__content-line_middle {

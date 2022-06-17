@@ -1,6 +1,6 @@
 <template>
   <div class="color-string">
-    <input type="text" v-model="colorString" />
+    <p class="color-string__text">{{ colorString }}</p>
     <app-button :set="copyButtonSet" @copy-color="copyColor" />
   </div>
 </template>
@@ -33,4 +33,18 @@
   }
 </script>
 
-<style></style>
+<style>
+  .color-string {
+    display: flex;
+    column-gap: 24px;
+  }
+
+  .color-string__text {
+    min-width: 320px;
+    font-size: 24px;
+    font-family: sans-serif;
+    font-style: italic;
+    text-align: right;
+    padding-top: 6px;
+  }
+</style>
