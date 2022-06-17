@@ -11,14 +11,25 @@
       <the-dump :newColor="newDumpColor" @new-color-request="openController" />
     </div>
 
-    <div class="the-main__content-line the-main__content-line_lower">
+    <div class="the-main__content-line the-main__content-line_middle">
       <app-trancparency-range
-        v-for="color in mainColors"
-        :key="color"
-        :color-part="color.part"
-        :src-alpha="color.alpha"
-        @wheel.exact="changeTransparency($event, color)"
-        @wheel.shift="changeSaturation($event, color)"
+        :color-part="mainColors[0].part"
+        :src-alpha="mainColors[0].alpha"
+        @wheel.exact="changeTransparency($event, mainColors[0])"
+        @wheel.shift="changeSaturation($event, mainColors[0])"
+      />
+
+      <div class="the-main-range-explanation">
+        <div class="the-main-range-explanation_pic"></div>
+        <p class="the-main-range-explanation_text">or Shift +</p>
+        <div class="the-main-range-explanation_pic"></div>
+      </div>
+
+      <app-trancparency-range
+        :color-part="mainColors[1].part"
+        :src-alpha="mainColors[1].alpha"
+        @wheel.exact="changeTransparency($event, mainColors[1])"
+        @wheel.shift="changeSaturation($event, mainColors[1])"
       />
     </div>
 
@@ -120,5 +131,29 @@
   .the-main__content-line_lower {
     justify-content: center;
     column-gap: 160px;
+  }
+
+  .the-main__content-line_middle {
+    justify-content: center;
+    align-items: center;
+    column-gap: 24px;
+  }
+
+  .the-main-range-explanation {
+    display: flex;
+    column-gap: 12px;
+  }
+
+  .the-main-range-explanation_pic {
+    width: 50px;
+    height: 50px;
+    background-image: url(../../assets/mousewheel_bg.png);
+  }
+
+  .the-main-range-explanation_text {
+    color: var(--dark-brown);
+    font-family: sans-serif;
+    font-size: 24px;
+    margin-top: 10px;
   }
 </style>

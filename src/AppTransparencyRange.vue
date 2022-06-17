@@ -109,7 +109,7 @@
     left: 8px;
     display: flex;
     flex-direction: row-reverse;
-    cursor: url('./assets/scrollable.png') 10 0, pointer;
+    cursor: url('./assets/mousewheel_pointer.png') 5 5, pointer;
     width: 400px;
     height: 40px;
     overflow: visible;
