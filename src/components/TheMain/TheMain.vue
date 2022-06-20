@@ -1,6 +1,6 @@
 <template>
   <main class="the-main">
-    <div class="the-main__content-line the-main__content-line_upper">
+    <section class="the-main__section the-main__section_upper">
       <the-sketches
         :color-0-part="mainColors[0].part"
         :color-0-alpha="mainColors[0].alpha"
@@ -9,9 +9,9 @@
       />
       <the-randomizer @pick-color="addColorToDump" />
       <the-dump :newColor="newDumpColor" @new-color-request="openController" />
-    </div>
+    </section>
 
-    <div class="the-main__content-line the-main__content-line_middle">
+    <div class="the-main__section the-main__section_middle">
       <app-trancparency-range
         :color-part="mainColors[0].part"
         :src-alpha="mainColors[0].alpha"
@@ -33,7 +33,7 @@
       />
     </div>
 
-    <div class="the-main__content-line the-main__content-line_lower">
+    <div class="the-main__section the-main__section_lower">
       <app-color-string
         v-for="color in mainColors"
         :key="color"
@@ -119,21 +119,21 @@
     row-gap: 40px;
   }
 
-  .the-main__content-line {
+  .the-main__section {
     width: 100%;
     display: flex;
   }
 
-  .the-main__content-line_upper {
+  .the-main__section_upper {
     justify-content: space-evenly;
   }
 
-  .the-main__content-line_lower {
+  .the-main__section_lower {
     justify-content: center;
     column-gap: 280px;
   }
 
-  .the-main__content-line_middle {
+  .the-main__section_middle {
     justify-content: center;
     align-items: center;
     column-gap: 24px;

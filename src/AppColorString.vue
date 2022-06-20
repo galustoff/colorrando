@@ -27,7 +27,11 @@
 
     methods: {
       copyColor() {
-        console.log(this.colorString)
+        try {
+          navigator.clipboard.writeText(this.colorString)
+        } catch (err) {
+          throw err
+        }
       }
     }
   }
@@ -41,10 +45,11 @@
 
   .color-string__text {
     min-width: 320px;
-    font-size: 24px;
+    font-size: 20px;
     font-family: sans-serif;
-    font-style: italic;
+    font-weight: 700;
+    color: var(--dark-brown);
     text-align: right;
-    padding-top: 6px;
+    padding-top: 10px;
   }
 </style>
